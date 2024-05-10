@@ -1,6 +1,6 @@
 # Tienda de VideoJuegos PWA
 
-Este es un proyecto de Tienda de Perfumes como una Progressive Web App (PWA).
+Este es un proyecto de Tienda de VideoJuegos como una Progressive Web App (PWA).
 
 ## Instalación
 

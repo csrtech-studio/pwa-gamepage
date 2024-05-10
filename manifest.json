@@ -1,7 +1,7 @@
 {
-  "name": "Tienda de Perfumes",
-  "short_name": "Perfumes",
-  "description": "Una tienda de perfumes en línea",
+  "name": "Tienda de VideoJuegos",
+  "short_name": "VideoJuegos",
+  "description": "Una tienda de videojuegos en línea",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -10,7 +10,7 @@
       {
           "src": "images/icons/image.jpg",
           "sizes": "192x192",
-          "type": "images/png"
+          "type": "image/png"
       }
   ]
 }
