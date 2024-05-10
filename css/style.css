@@ -1,0 +1,61 @@
+/* Estilos para la imagen del perfume */
+.perfume-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilos para la lista de perfumes */
+.perfume-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.perfume-item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  overflow: hidden; /* Evita que las imágenes sobresalgan */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.perfume-item:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para los detalles del perfume */
+.perfume-details {
+  padding: 10px;
+}
+
+.perfume-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.perfume-description {
+  margin-top: 10px;
+  color: #666;
+}
+
+.perfume-price {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Estilos para el botón de compra */
+.comprar-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comprar-button:hover {
+  background-color: #45a049;
+}

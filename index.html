@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda de perfumes PWA">
+    <title>Tienda de Perfumes</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a la Tienda de Perfumes</h1>
+        <div class="perfume-list">
+            <!-- Perfume 1 -->
+            <div class="perfume-item">
+                <img src="images/perfume1.jpg" alt="Perfume 1" class="perfume-image">
+                <div class="perfume-details">
+                    <h2 class="perfume-title">Elegancia Envuelta</h2>
+                    <p class="perfume-description">
+                      Descripción:
+                      <ul style="text-align: justify;">
+                          <li><strong>Frasco:</strong> Un recipiente sofisticado que refleja la luz, adornado con detalles dorados que evocan la opulencia.</li>
+                          <li><strong>Aroma:</strong> Una mezcla embriagadora de vainilla cremosa y cítricos dulces, con un corazón de flores blancas y un fondo de maderas preciosas.</li>
+                          <li><strong>Sensación:</strong> Al usar Elegancia Envuelta, te envolverás en un aura de lujo y confort, como un abrazo suave que perdura a lo largo del día.</li>
+                      </ul>  
+                  </p>
+                  <p style="text-align: justify;"><strong>Espero que esta creación te inspire y te transporte a un mundo de belleza y sofisticación.</strong></p>
+                    <p class="perfume-price">$900</p>
+                    <button class="comprar-button">Comprar</button>
+                </div>
+            </div>
+            <!-- Repite lo mismo para los perfumes 2 al 9 -->
+            <div class="perfume-item">
+              <img src="images/perfume2.jpg" alt="Perfume 1" class="perfume-image">
+              <div class="perfume-details">
+                  <h2 class="perfume-title">Sueño de Seda</h2>
+                  <p class="perfume-description">
+                    Descripción:
+                    <ul style="text-align: justify;">
+                        <li><strong>Frasco:</strong>Un frasco de cristal esmerilado, suave al tacto como la seda. La tapa, en forma de una flor en plena floración, es un tributo a la belleza efímera.</li>
+                        <li><strong>Aroma:</strong>Notas de bergamota y pétalos de rosa se entrelazan con un toque de almizcle blanco, creando una fragancia que es tanto fresca como reconfortante.</li>
+                        <li><strong>Sensación:</strong>Al rociar Sueño de Seda, te envolverás en una sensación de calma y elegancia. Es como caminar por un jardín secreto al amanecer, cuando el rocío besa las flores.</li>
+                    </ul>  
+                </p>
+                <p style="text-align: justify;"><strong>Espero que esta nueva creación te inspire y te transporte a un mundo de ensueño y delicadeza.</strong></p>
+                  <p class="perfume-price">$1.200</p>
+                  <button class="comprar-button">Comprar</button>
+              </div>
+          </div>
+            <!-- Perfume 3 -->
+            <div class="perfume-item">
+                <img src="images/perfume3.jpg" alt="Perfume 3" class="perfume-image">
+                <div class="perfume-details">
+                    <h2 class="perfume-title">Perfume 3</h2>
+                    <p class="perfume-description">Descripción del Perfume 3</p>
+                    <p class="perfume-price">$90</p>
+                    <button class="comprar-button">Comprar</button>
+                </div>
+            </div>
+            <!-- ... Repite lo mismo para los perfumes restantes -->
+            <!-- Perfume 9 -->
+            <div class="perfume-item">
+                <img src="images/perfume9.jpg" alt="Perfume 9" class="perfume-image">
+                <div class="perfume-details">
+                    <h2 class="perfume-title">Perfume 9</h2>
+                    <p class="perfume-description">Descripción del Perfume 9</p>
+                    <p class="perfume-price">$95</p>
+                    <button class="comprar-button">Comprar</button>
+                </div>
+            </div>
+        </div>
+        <div id="carrito"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceWorker.js')
+                .then(registration => {
+                    console.log('Service Worker registrado:', registration);
+                })
+                .catch(error => {
+                    console.error('Error al registrar el Service Worker:', error);
+                });
+        }
+    </script>
+</body>
+</html>

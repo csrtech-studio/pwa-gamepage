@@ -1,0 +1,16 @@
+{
+  "name": "Tienda de Perfumes",
+  "short_name": "Perfumes",
+  "description": "Una tienda de perfumes en línea",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "icons": [
+      {
+          "src": "images/icons/image.jpg",
+          "sizes": "192x192",
+          "type": "images/png"
+      }
+  ]
+}
