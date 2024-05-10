@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda de Videojuegos PWA">
-    <title>Tienda de Videojuegos/title>
+    <meta name="description" content="Tienda de videojuegos PWA">
+    <title>Tienda de Videojuegos</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
     <script src="notificaciones.js"></script>
@@ -12,80 +12,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido a la Tienda de VideoJuegos</h1>
-        <div class="Videojuegos">
-            <!-- Videojuegos 1 -->
-            <div class="videojuegos-item">
-                <img src="images/perfume1.jpg" alt="VideoJuegos 1" class="videojuegos-image">
-                <div class="videojuegos-details">
-                    <h2 class="videojuegos-title">Elegancia Envuelta</h2>
-                    <p class="videojuegos-description">
+        <h1>Bienvenido a la Tienda de Videojuegos</h1>
+        <div class="videojuego-list">
+            <!-- Videojuego 1 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego1.jpg" alt="Videojuego 1" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Epic Fantasy</h2>
+                    <p class="videojuego-description">
                       Descripción:
                       <ul style="text-align: justify;">
-                          <li><strong>Frasco:</strong> Un recipiente sofisticado que refleja la luz, adornado con detalles dorados que evocan la opulencia.</li>
-                          <li><strong>Aroma:</strong> Una mezcla embriagadora de vainilla cremosa y cítricos dulces, con un corazón de flores blancas y un fondo de maderas preciosas.</li>
-                          <li><strong>Sensación:</strong> Al usar Elegancia Envuelta, te envolverás en un aura de lujo y confort, como un abrazo suave que perdura a lo largo del día.</li>
+                          <li><strong>Género:</strong> Juego de rol de acción con gráficos impresionantes y una historia envolvente.</li>
+                          <li><strong>Mundo:</strong> Explora un vasto mundo abierto lleno de secretos y misterios por descubrir.</li>
+                          <li><strong>Personajes:</strong> Conviértete en el héroe de la historia y forja tu destino en batallas épicas.</li>
                       </ul>  
                   </p>
-                  <p style="text-align: justify;"><strong>Espero que esta creación te inspire y te transporte a un mundo de belleza y sofisticación.</strong></p>
-                    <p class="videojuego-price">$900</p>
+                  <p style="text-align: justify;"><strong>Prepárate para una aventura increíble llena de magia y emoción.</strong></p>
+                    <p class="videojuego-price">$50</p>
                     <button class="comprar-button">Comprar</button>
                 </div>
             </div>
-            <!-- Repite lo mismo para los perfumes 2 al 9 -->
-            <div class="perfume-item">
-              <img src="images/perfume2.jpg" alt="Perfume 1" class="perfume-image">
-              <div class="perfume-details">
-                  <h2 class="perfume-title">Sueño de Seda</h2>
-                  <p class="perfume-description">
-                    Descripción:
-                    <ul style="text-align: justify;">
-                        <li><strong>Frasco:</strong>Un frasco de cristal esmerilado, suave al tacto como la seda. La tapa, en forma de una flor en plena floración, es un tributo a la belleza efímera.</li>
-                        <li><strong>Aroma:</strong>Notas de bergamota y pétalos de rosa se entrelazan con un toque de almizcle blanco, creando una fragancia que es tanto fresca como reconfortante.</li>
-                        <li><strong>Sensación:</strong>Al rociar Sueño de Seda, te envolverás en una sensación de calma y elegancia. Es como caminar por un jardín secreto al amanecer, cuando el rocío besa las flores.</li>
-                    </ul>  
-                </p>
-                <p style="text-align: justify;"><strong>Espero que esta nueva creación te inspire y te transporte a un mundo de ensueño y delicadeza.</strong></p>
-                  <p class="perfume-price">$1.200</p>
-                  <button class="comprar-button">Comprar</button>
-              </div>
-          </div>
-            <!-- Perfume 3 -->
-            <div class="perfume-item">
-                <img src="images/perfume3.jpg" alt="Perfume 3" class="perfume-image">
-                <div class="perfume-details">
-                    <h2 class="perfume-title">Perfume 3</h2>
-                    <p class="perfume-description">Descripción del Perfume 3</p>
-                    <p class="perfume-price">$90</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
-            <!-- ... Repite lo mismo para los perfumes restantes -->
-            <!-- Perfume 9 -->
-            <div class="perfume-item">
-                <img src="images/perfume9.jpg" alt="Perfume 9" class="perfume-image">
-                <div class="perfume-details">
-                    <h2 class="perfume-title">Perfume 9</h2>
-                    <p class="perfume-description">Descripción del Perfume 9</p>
-                    <p class="perfume-price">$95</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
+            <!-- Repite lo mismo para los videojuegos 2 al 9 -->
+            <!-- ... -->
         </div>
         <div id="carrito"></div>
     </div>
 
-    <script src="js/app.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/serviceWorker.js')
-                .then(registration => {
-                    console.log('Service Worker registrado:', registration);
-                })
-                .catch(error => {
-                    console.error('Error al registrar el Service Worker:', error);
-                });
-        }
-    </script>
+    <!-- Otro contenido y scripts -->
 </body>
 </html>
