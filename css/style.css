@@ -59,3 +59,72 @@
 .comprar-button:hover {
   background-color: #45a049;
 }
+
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle:checked + .menu {
+  display: block;
+}
+
+.menu {
+  display: none;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      z-index: 1000;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+  text-align: justify;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+.team-member {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.team-member:last-child {
+  border-bottom: none;
+}
+
+.team-member h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  margin-bottom: 10px;
+}
