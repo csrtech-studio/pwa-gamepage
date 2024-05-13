@@ -1,8 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.querySelector('.menu');
+const navbar = document.getElementById('navbar');
 
-    menuToggle.addEventListener('click', function() {
-        menu.classList.toggle('open');
-    });
+document.addEventListener('mousemove', (event) => {
+    // Si el cursor se mueve hacia arriba (hacia la barra de navegación)
+    if (event.clientY < 40) {
+        navbar.classList.remove('hidden');
+    } else {
+        navbar.classList.add('hidden');
+    }
 });

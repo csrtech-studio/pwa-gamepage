@@ -9,17 +9,15 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="notificaciones.js"></script>
     <script src="videojuegos.js"></script>
-    <script src="js/menu.js"></script>
+    
 </head>
 <body>
-    <header>
-        <label id="menu-toggle" class="menu-toggle">Menu</label>
-        <div class="menu">
-            <div class="menu-item"><a href="index.html">Home</a></div>
-            <div class="menu-item"><a href="compras.html">Compras</a></div>
-            <div class="menu-item"><a href="nosotros.html">Nosotros</a></div>
-        </div>
-    </header>
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">Inicio</a>
+        <a href="ventas.html" class="nav-item">Compras</a>
+        <a href="nosotros.html" class="nav-item">Nosotros</a>
+    </nav>
+   
     <div class="container">
         <h1>Bienvenido a la Tienda de Videojuegos</h1>
         <div class="videojuego-list">
@@ -37,16 +35,32 @@
                         </ul>  
                     </p>
                     <p style="text-align: justify;"><strong>Prepárate para una aventura increíble llena de magia y emoción.</strong></p>
-                    <p class="videojuego-price">$50</p>
+                    <p class="videojuego-price">$950</p>
                     <button class="comprar-button">Comprar</button>
                 </div>
             </div>
-            <!-- Repite lo mismo para los videojuegos 2 al 9 -->
-            <!-- ... -->
+            <!-- Videojuego 2 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego2.jpg" alt="Videojuego 2" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Reinos de la Eternidad</h2>
+                    <p class="videojuego-description">
+                        Descripción:
+                        <ul style="text-align: justify;">
+                            <li><strong>Género:</strong> Sumérgete en un juego de rol de acción donde la magia y la aventura se entrelazan en un lienzo épico.</li>
+                            <li><strong>Mundo:</strong> Descubre un vasto reino lleno de antiguos enigmas y criaturas legendarias en cada esquina.</li>
+                            <li><strong>Personajes:</strong> Encarna el papel de un héroe legendario, forja alianzas y desafía a poderosos enemigos en batallas que cambiarán el destino del mundo.</li>
+                        </ul>  
+                    </p>
+                    <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante donde tu habilidad en combate y tu sabiduría en el uso de la magia serán clave para enfrentar los desafíos que aguardan.</strong></p>
+                    <p class="videojuego-price">$1,150</p>
+                    <button class="comprar-button">Comprar</button>
+                </div>
+            </div>
         </div>
         <div id="carrito"></div>
     </div>
 
-    <!-- Otro contenido y scripts -->
+    <script src="js/menu.js"></script>
 </body>
 </html>

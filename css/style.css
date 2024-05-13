@@ -1,10 +1,3 @@
-/* Estilos para la imagen del videojuego */
-.videojuego-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
 /* Estilos para la lista de videojuegos */
 .videojuego-list {
   display: grid;
@@ -13,22 +6,36 @@
   margin-top: 20px;
 }
 
+/* Estilos para cada elemento de videojuego */
 .videojuego-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente los elementos hijos */
+  align-items: center; /* Centra horizontalmente los elementos hijos */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
-  overflow: hidden; /* Evita que las imágenes sobresalgan */
+  overflow: hidden;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.videojuego-item:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.videojuego-image {
+  max-width: 80%;
+  height: auto;
+  border-radius: 5px 5px 0 0; /* Redondea solo las esquinas superiores de la imagen */
 }
 
-/* Estilos para los detalles del videojuego */
+.videojuego-item:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Ajusta el valor de la sombra según sea necesario */
+}
+.videojuego-item:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse */
+}
+
+
 .videojuego-details {
   padding: 10px;
+  flex-grow: 1; /* Permite que el contenido se expanda verticalmente */
 }
 
 .videojuego-title {
@@ -46,6 +53,7 @@
   font-weight: bold;
 }
 
+
 /* Estilos para el botón de compra */
 .comprar-button {
   background-color: #4CAF50;
@@ -60,67 +68,115 @@
   background-color: #45a049;
 }
 
-
-/* Estilos para el botón del menú de hamburguesa */
-.menu-toggle {
-  display: block;
-  cursor: pointer;
-  width: 30px; /* Ajusta el ancho según sea necesario */
-  height: 20px; /* Ajusta la altura según sea necesario */
-  position: relative;
-}
-
-.menu-toggle span {
-  display: block;
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: #000;
-  transition: transform 0.3s ease;
-}
-
-.menu-toggle span:nth-child(1) {
-  top: 0;
-}
-
-.menu-toggle span:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.menu-toggle span:nth-child(3) {
-  bottom: 0;
-}
-
-.menu-toggle.open span:nth-child(1) {
-  transform: translateY(50%) rotate(45deg);
-}
-
-.menu-toggle.open span:nth-child(2) {
-  transform: translateY(-50%) scaleX(0);
-}
-
-.menu-toggle.open span:nth-child(3) {
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-/* Estilos para el menú */
-.menu {
-  display: none;
-}
-
-.menu-item {
-  margin-bottom: 10px;
-}
-
+/* Media queries para responsividad */
 @media screen and (max-width: 768px) {
-  .menu {
-      position: absolute;
-      top: 50px;
-      right: 0;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      padding: 10px;
-      z-index: 1000;
+  .videojuego-list {
+    grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos móviles */
   }
+}
+
+
+/* Estilos para el botón de compra */
+.comprar-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.comprar-button:hover {
+  background-color: #45a049;
+}
+
+/* Css para navegador */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.nav-item:hover {
+  background-color: #555;
+}
+
+h1 {
+  margin-top: 60px; /* Margen superior igual a la altura de la barra de navegación */
+  text-align: center;
+}
+
+/* Css para  nosotros.html */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Cambia el color de fondo según tu preferencia */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff; /* Cambia el color de fondo del contenedor según tu preferencia */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra al contenedor */
+  border-radius: 5px; /* Agrega bordes redondeados al contenedor */
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.team-member {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.team-member:last-child {
+  border-bottom: none;
+}
+.team-member h2 {
+  font-weight: bold; /* Texto en negritas */
+  display: flex;
+  align-items: center;
+}
+
+.team-member h2::before {
+  content: '•'; /* Círculo para las fotos */
+  margin-right: 10px;
+}
+
+.team-member img {
+  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  border-radius: 50%; /* Borde redondeado para la imagen */
+  margin-right: 20px;
 }
