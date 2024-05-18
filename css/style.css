@@ -1,252 +1,73 @@
-body {
-  background-image: url('../images/fondo.png');
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-
-/* Estilos Index */
+/* Estilos generales */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   background-color: rgba(255, 255, 255, 0.8); 
   color: #022521;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-
-  h1, h2 {
-    color: #022521; 
-   text-decoration: solid;
-  
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 767px) {
+  /* Estilos para el encabezado */
+  header {
+    padding: 10px; /* Reducir el padding */
+    margin: 10px 0; /* Reducir el margen */
   }
   
-  p {
-    color: #0f0f0f; 
-    font-weight: bold; 
-  
+  .logo img {
+    width: 50px; /* Reducir el tamaño del logo */
+    height: 50px;
+    margin-right: 20px; /* Reducir el margen */
   }
-}
 
-.logo img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; 
-  margin-right: 100px; 
-    margin-top: 100px; 
-}
+  /* Estilos para la sección principal */
+  main {
+    padding: 10px; /* Reducir el padding */
+  }
 
+  section {
+    padding: 10px; /* Reducir el padding */
+    margin: 10px 0; /* Reducir el margen */
+  }
 
-#cart-button {
-  position: relative;
-}
+  /* Estilos para la lista de videojuegos */
+  .videojuego-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reducir el tamaño de las columnas */
+  }
 
-#cart-button img {
-  width: 30px;
-  height: auto; 
-  cursor: pointer;
-}
+  /* Estilos para los elementos individuales de videojuegos */
+  .videojuego-item {
+    padding: 10px; /* Reducir el padding */
+    margin: 0 5px 10px; /* Ajustar el margen */
+  }
 
-.cart-count {
-  position: absolute;
-  top: 7px; 
-  right: -5px; 
-  background-color: red;
-  color: black;
-  border-radius: 100%;
-  padding: 4px;
-  font-size: 12px;
-}
+  .videojuego-title {
+    font-size: 1.2em; /* Reducir el tamaño de la fuente */
+  }
 
-.description {
-  margin-left: 20px;
-}
+  .videojuego-description {
+    font-size: 0.8em; /* Reducir el tamaño de la fuente */
+  }
 
-.description h1 {
-  margin: 0;
-  color: #333;
-  font-size: 2em;
-}
+  /* Estilos para la sección de pago */
+  .pago-container {
+    flex-direction: column; /* Cambiar la dirección de la columna */
+  }
 
-.description p {
-  color: #666;
-}
+  .columna-izquierda, .columna-derecha {
+    margin-right: 0; /* Eliminar el margen derecho */
+  }
 
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
+  .producto-detalle {
+    flex-direction: column; /* Cambiar la dirección de la columna */
+    align-items: flex-start; /* Alinear los elementos a la izquierda */
+  }
 
-section {
-  background-color: rgba(255, 255, 255, 0.8); 
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-  width: 80%;
-  max-width: 800px;
-}
-
-section h2 {
-  margin-top: 0;
-  color: #00796b;
-}
-
-section p, section ul {
-  color: #0c0c0c; 
-}
-
-section ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-footer {
-  background-color: rgba(2, 0, 121, 0.8); 
-  color: #f7f3f3; 
-  text-align: center;
-  padding: 10px;
-  width: 100%;
-  position: relative;
-  bottom: 0;
-}
-
-/* Estilos para la lista de videojuegos */
-.videojuego-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-  margin-top: 20px;
-}
-
-/* Estilos para cada elemento de videojuego */
-.videojuego-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}
-
-.videojuego-image {
-  max-width: 80%;
-  height: auto;
-  border-radius: 5px 5px 0 0; 
-}
-
-.videojuego-item:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
-}
-
-.videojuego-item:hover {
-  background-color: rgba(194, 247, 184, 0.8);
-}
-
-.videojuego-details {
-  padding: 10px;
-  flex-grow: 1; 
-}
-
-.videojuego-title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.videojuego-description {
-  margin-top: 10px;
-  color: #666;
-}
-
-.videojuego-price {
-  color: #4CAF50;
-  font-weight: bold;
-}
-
-/* Estilos para el botón de compra */
-.comprar-button, .agregar-carrito-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.comprar-button:hover, .agregar-carrito-button:hover {
-  background-color: #45a049;
-}
-
-/* Css para navegador */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
-  background-color: #333; 
-  padding: 10px 0;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-item {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin: 0 10px;
-  display: inline-block;
-}
-
-.nav-item:hover {
-  background-color: #555;
-}
-
-
-h1 {
-  margin-top: 60px; 
-  text-align: center;
-}
-
-/* Css para nosotros.html */
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: rgba(249, 249, 249, 0.8); 
-}
-
-.container_n {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;  
-  border-radius: 20px; 
+  /* Estilos para el formulario de pago */
+  .formulario-pago {
+    grid-template-columns: 1fr; /* Cambiar a una sola columna */
+  }
 }
 
 .titulo-seccion{
@@ -259,7 +80,6 @@ body {
   position: relative;
   bottom: 10;
 }
-
 
 h1, h2 {
   color: #3700ff; 
@@ -304,57 +124,4 @@ p {
 
 .team-member p {
   margin: 0px 20px 0; /* Añade un margen superior para separar del h2 */
-}
-
-/* Estilos para la página de pago */
-/* Estilo para el contenedor principal de pago */
-.pago-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-/* Estilo para la columna izquierda (detalles de la compra) */
-.columna-izquierda {
-  flex: 1;
-  margin-right: 20px;
-}
-
-.columna-derecha {
-  flex: 1;
-}
-
-.producto-detalle {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.1); 
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* Estilo para el formulario de pago */
-.formulario-pago {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0.1); 
-  padding: 20px;
-  border-radius: 5px;
-}
-
-/* Estilo para el botón de pago */
-.formulario-pago button {
-  grid-column: span 2;
-  padding: 10px;
-  background-color: #fff; 
-  color: #333; 
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.formulario-pago button:hover {
-  background-color: #f0f0f0; 
 }
