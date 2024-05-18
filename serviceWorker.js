@@ -91,3 +91,7 @@ function showNewGameNotification() {
     };
     showNotification(title, options);
 }
+
+function showNotification(title, options) {
+    self.registration.showNotification(title, options);
+}
