@@ -1,38 +1,72 @@
-
-/* Estilos Generales */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-image: url('../images/fondo.png');
   background-attachment: fixed;
   background-size: cover;
 }
 
+
 /* Estilos Index */
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8); 
   color: #022521;
 }
 
 header {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
+
+  h1, h2 {
+    color: #022521; 
+   text-decoration: solid;
+  
+  }
+  
+  p {
+    color: #0f0f0f; 
+    font-weight: bold; 
+  
+  }
 }
 
 .logo img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  margin-right: 20px;
+  border-radius: 50%; 
+  margin-right: 100px; 
+    margin-top: 100px; 
+}
+
+
+#cart-button {
+  position: relative;
+}
+
+#cart-button img {
+  width: 30px;
+  height: auto; 
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: 7px; 
+  right: -5px; 
+  background-color: red;
+  color: black;
+  border-radius: 100%;
+  padding: 4px;
+  font-size: 12px;
 }
 
 .description {
@@ -57,6 +91,40 @@ main {
   padding: 20px;
 }
 
+section {
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 80%;
+  max-width: 800px;
+}
+
+section h2 {
+  margin-top: 0;
+  color: #00796b;
+}
+
+section p, section ul {
+  color: #0c0c0c; 
+}
+
+section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+footer {
+  background-color: rgba(2, 0, 121, 0.8); 
+  color: #f7f3f3; 
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
 /* Estilos para la lista de videojuegos */
 .videojuego-list {
   display: grid;
@@ -65,11 +133,12 @@ main {
   margin-top: 20px;
 }
 
+/* Estilos para cada elemento de videojuego */
 .videojuego-item {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; 
+  align-items: center; 
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -77,8 +146,14 @@ main {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
+.videojuego-image {
+  max-width: 80%;
+  height: auto;
+  border-radius: 5px 5px 0 0; 
+}
+
 .videojuego-item:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .videojuego-item:hover {
@@ -87,7 +162,7 @@ main {
 
 .videojuego-details {
   padding: 10px;
-  flex-grow: 1;
+  flex-grow: 1; 
 }
 
 .videojuego-title {
@@ -119,9 +194,14 @@ main {
   background-color: #45a049;
 }
 
-/* Estilos para el navbar */
+/* Css para navegador */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .navbar {
-  background-color: #333;
+  background-color: #333; 
   padding: 10px 0;
   text-align: center;
   position: fixed;
@@ -144,63 +224,90 @@ main {
   background-color: #555;
 }
 
-/* Estilos para la página de nosotros */
+
+h1 {
+  margin-top: 60px; 
+  text-align: center;
+}
+
+/* Css para nosotros.html */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgba(249, 249, 249, 0.8); 
+}
+
 .container_n {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;
-  border-radius: 20px;
+  box-shadow: none;  
+  border-radius: 20px; 
 }
 
-.titulo-seccion {
-  background-color: rgba(2, 0, 121, 0.8);
-  color: #f7f3f3;
+.titulo-seccion{
+  background-color: rgba(2, 0, 121, 0.8); 
+  color: #f7f3f3; 
   text-align: center;
-  display: inline-block;
+  display: inline-block; 
   padding: 10px;
   width: 100%;
   position: relative;
   bottom: 10;
 }
 
+
+h1, h2 {
+  color: #3700ff; 
+  text-decoration: solid;
+}
+
+p {
+  color: #0f0f0f;
+  font-weight: bold;
+}
+
 .team-member {
   max-width: 900px;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px; /* Añade margen inferior para espacio entre miembros */
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;
-  border-radius: 20px;
+  box-shadow: none;  
+  border-radius: 20px; 
   display: flex;
   padding: 20px;
 }
 
 .team-member .image-container {
   margin-right: 20px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Evita que la imagen se reduzca */
 }
 
 .team-member img {
-  width: 100px;
-  border-radius: 50%;
+  width: 100px; 
+  border-radius: 50%; 
 }
 
 .team-member .info {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column; /* Coloca h2 y p en columna */
+  justify-content: center; /* Centra verticalmente el contenido */
 }
 
 .team-member h2 {
-  font-weight: bold;
-  margin: 20px;
+  font-weight: bold; 
+  margin: 20px;/* Elimina margen para mejor alineación */
 }
 
 .team-member p {
-  margin: 0px 20px 0;
+  margin: 0px 20px 0; /* Añade un margen superior para separar del h2 */
 }
 
 /* Estilos para la página de pago */
+/* Estilo para el contenedor principal de pago */
 .pago-container {
   display: flex;
   justify-content: space-between;
@@ -208,6 +315,7 @@ main {
   margin-bottom: 20px;
 }
 
+/* Estilo para la columna izquierda (detalles de la compra) */
 .columna-izquierda {
   flex: 1;
   margin-right: 20px;
@@ -221,68 +329,32 @@ main {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); 
   padding: 10px;
   border-radius: 5px;
 }
 
+/* Estilo para el formulario de pago */
 .formulario-pago {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); 
   padding: 20px;
   border-radius: 5px;
 }
 
+/* Estilo para el botón de pago */
 .formulario-pago button {
   grid-column: span 2;
   padding: 10px;
-  background-color: #fff;
-  color: #333;
+  background-color: #fff; 
+  color: #333; 
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .formulario-pago button:hover {
-  background-color: #f0f0f0;
-}
-
-/* Media Queries para dispositivos móviles */
-@media (max-width: 768px) {
-  header {
-    margin: 10px;
-  }
-
-  .logo img {
-    margin: 0;
-  }
-
-  .description {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .videojuego-item {
-    width: 100%;
-  }
-
-  .team-member {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .team-member .image-container {
-    margin-bottom: 10px;
-  }
-  
-  .columna-izquierda,
-  .columna-derecha {
-    margin-right: 0;
-  }
-  
-  .formulario-pago {
-    grid-template-columns: 1fr;
-  }
+  background-color: #f0f0f0; 
 }
