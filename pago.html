@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de pago de la Tienda de Videojuegos">
+    <title>Pago - Tienda de Videojuegos</title>
+    <!-- Enlaces a estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">Inicio</a>
+        <a href="ventas.html" class="nav-item">Tienda de Videojuegos</a>
+        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <div id="cart-button" class="nav-item">
+            <img src="images/cart-count.png" alt="Carrito de Compras">
+            <span class="cart-count">0</span>
+        </div>
+    </nav>
+    <h1>Pago</h1>
+
+    <div class="pago-container">
+        <div class="detalles-y-total">
+            <div class="detalles-compra">
+                <h2 class="titulo-seccion">Detalles de la compra</h2>
+                <div class="producto-detalle">
+                    <img src="images/videojuego1.jpg" alt="Videojuego 1" class="producto-imagen">
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Epic Fantasy</h3>
+                        <p class="producto-precio">$950</p>
+                        <p>Cantidad: <span class="cantidad">1</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="total-container">
+                <h2 class="titulo-seccion">Total a pagar:</h2>
+                <p class="total-precio">$950</p>
+            </div>
+        </div>
+    
+        <form id="formulario-pago" class="formulario-pago">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required>
+    
+            <label for="tarjeta">Número de tarjeta:</label>
+            <div class="tarjeta-container">
+                <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                <img src="images/tarjeta-icono.png" alt="Icono de tarjeta" class="tarjeta-icono">
+            </div>
+    
+            <div class="input-group">
+                <div class="input-group-item">
+                    <label for="vencimiento">Fecha de vencimiento:</label>
+                    <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/YY" required>
+                </div>
+                <div class="input-group-item">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+    
+            <button type="submit" class="realizar-pago">Realizar Pago</button>
+        </form>
+    </div>
+    
+    <script src="js/pago.js"></script> <!-- Enlaza tu archivo de JavaScript para el pago -->
+</body>
+</html>

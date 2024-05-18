@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,110 +7,54 @@
     <title>Tienda de Videojuegos</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
     <script src="notificaciones.js"></script>
     <script src="videojuegos.js"></script>
-
+    
 </head>
-
 <body>
     <nav class="navbar">
         <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Compras</a>
+        <a href="ventas.html" class="nav-item">Tienda de Videojuegos</a>
         <a href="nosotros.html" class="nav-item">Nosotros</a>
-    </nav>
-
-    <div class="container">
-        <h1>Bienvenido a la Tienda de Videojuegos</h1>
-        <div class="videojuego-list">
-            <!-- Videojuego 1 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego1.jpg" alt="Videojuego 1" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Epic Fantasy</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                    <ul style="text-align: justify;">
-                        <li><strong>Género:</strong> Juego de rol de acción con gráficos impresionantes y una historia
-                            envolvente.</li>
-                        <li><strong>Mundo:</strong> Explora un vasto mundo abierto lleno de secretos y misterios por
-                            descubrir.</li>
-                        <li><strong>Personajes:</strong> Conviértete en el héroe de la historia y forja tu destino en
-                            batallas épicas.</li>
-                    </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Prepárate para una aventura increíble llena de magia y
-                            emoción.</strong></p>
-                    <p class="videojuego-price">$950</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
-            <!-- Videojuego 2 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego2.jpg" alt="Videojuego 2" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Reinos de la Eternidad</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                    <ul style="text-align: justify;">
-                        <li><strong>Género:</strong> Sumérgete en un juego de rol de acción donde la magia y la aventura
-                            se entrelazan en un lienzo épico.</li>
-                        <li><strong>Mundo:</strong> Descubre un vasto reino lleno de antiguos enigmas y criaturas
-                            legendarias en cada esquina.</li>
-                        <li><strong>Personajes:</strong> Encarna el papel de un héroe legendario, forja alianzas y
-                            desafía a poderosos enemigos en batallas que cambiarán el destino del mundo.</li>
-                    </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante donde tu
-                            habilidad en combate y tu sabiduría en el uso de la magia serán clave para enfrentar los
-                            desafíos que aguardan.</strong></p>
-                    <p class="videojuego-price">$1,150</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
-            <!-- Videojuego 3 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego3.jpg" alt="Videojuego 3" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Tierras Perdidas</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                    <ul style="text-align: justify;">
-                        <li><strong>Género:</strong> Juego de rol de acción con elementos de exploración, supervivencia y misterio.</li>
-                        <li><strong>Mundo:</strong> Adéntrate en un vasto continente cubierto de selvas densas, desiertos ardientes y montañas escarpadas, cada uno lleno de peligros y maravillas por igual. Descubre ruinas antiguas, templos olvidados y ciudades perdidas mientras desentrañas la historia de una civilización desaparecida y su legado perdido en el tiempo.</li>
-                        <li><strong>Personajes:</strong> Forma un equipo de exploradores intrépidos, cada uno con habilidades únicas y motivaciones personales, y adéntrate en lo desconocido en busca de respuestas y tesoros perdidos. Enfréntate a bestias salvajes, tribus hostiles y antiguas maldiciones mientras te enfrentas a los desafíos de un mundo en ruinas.</li>
-                    </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Explora un mundo misterioso y olvidado en este juego de rol de acción que te lleva a través de paisajes exóticos y ruinas antiguas. Desentraña los secretos de una civilización perdida, enfrenta a bestias salvajes y descubre artefactos ancestrales mientras te abres camino hacia la verdad detrás del colapso de una antigua civilización.</strong></p>
-                    <p class="videojuego-price">$1,150</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Videojuego 4 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego4.jpg" alt="Videojuego 4" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title"> Space Odyssey</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                    <ul style="text-align: justify;">
-                        <li><strong>Género:</strong> Juego de rol de acción con elementos de exploración espacial y combate estratégico</li>
-                        <li><strong>Mundo:</strong> Explora los reinos de un vasto continente lleno de ciudades bulliciosas, bosques encantados, montañas nevadas y mazmorras olvidadas. Descubre secretos ancestrales y leyendas perdidas mientras te abres camino hacia la victoria contra las fuerzas del mal.</li>
-                        <li><strong>Personajes:</strong> Elige entre una variedad de clases de personajes, desde valientes caballeros hasta poderosos magos, y personaliza tu héroe con habilidades únicas y equipo legendario. Forma un grupo de aventureros y enfréntate a monstruos épicos, desafíos mortales y villanos despiadados en tu búsqueda por la gloria.</li>
-                    </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Embárcate en un viaje épico a través del cosmos en este juego de rol de acción futurista. Únete a una tripulación intrépida en su nave espacial mientras exploras planetas desconocidos, luchas contra alienígenas hostiles y desentrañas los misterios del universo.</strong></p>
-                    <p class="videojuego-price">$1,750</p>
-                    <button class="comprar-button">Comprar</button>
-                </div>
-            </div>
-
-
+        <div id="cart-button" class="nav-item">
+            <img src="images/cart-count.png" alt="Carrito de Compras">
+            <span class="cart-count">0</span>
         </div>
-        <div id="carrito"></div>
-    </div>
-
-    <script src="js/menu.js"></script>
+    </nav>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo de CSRTechStudio">
+        </div>
+        <div class="intro ">
+            <h1>Bienvenidos a CSRTechStudio</h1>
+            <p>En CSRTechStudio nos dedicamos al desarrollo y venta de videojuegos innovadores y de alta calidad.</p><p> Nuestro equipo de expertos trabaja incansablemente para crear experiencias de juego inolvidables para todas las edades.</p>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <h2>Sobre Nosotros</h2>
+            <p>CSRTechStudio es una empresa líder en la industria de los videojuegos, comprometida con la creación de experiencias únicas e inmersivas. Desde nuestra fundación, hemos lanzado numerosos títulos aclamados por la crítica y los jugadores.</p>
+        </section>
+        <section class="services">
+            <h2>Nuestros Servicios</h2>
+            <ul>
+                <li>Desarrollo de Videojuegos</li>
+                <li>Publicación y Distribución</li>
+                <li>Soporte y Actualizaciones</li>
+                <li>Consultoría en Desarrollo de Juegos</li>
+            </ul>
+        </section>
+        <section class="contact">
+            <h2>Contacto</h2>
+            <p>Para más información, contáctanos a través de nuestro correo electrónico: <a href="mailto:info@csrtechstudio.com">info@csrtechstudio.com</a>.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CSRTechStudio. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/register-sw.js"></script>
+    <script src="js/notificationsHandler.js"></script>
 </body>
-
 </html>

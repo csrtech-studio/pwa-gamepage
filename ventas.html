@@ -3,18 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página de ventas de la Tienda de Videojuegos">
-    <title>Ventas - Tienda de Videojuegos</title>
-    <!-- Enlaces a estilos CSS y scripts JavaScript -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Tienda de videojuegos PWA">
+    <title>Tienda de Videojuegos</title>
+    <link rel="stylesheet" href="css/style.css">   
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"> 
 </head>
 <body>
     <nav class="navbar">
         <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Compras</a>
+        <a href="ventas.html" class="nav-item">Tienda de Videojuegos</a>
         <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <div id="cart-button" class="nav-item">
+            <img src="images/cart-count.png" alt="Carrito de Compras">
+            <span class="cart-count">0</span>
+        </div>
     </nav>
-    <h1>Registra tus ventas y administra tu tienda</h1>
-    <!-- Contenido de la página de ventas -->
+   
+    <div class="container">
+        <h1 class="titulo-seccion">Bienvenido a la Tienda de Videojuegos</h1>
+        <div class="videojuego-list">
+            <!-- Videojuego 1 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego1.png" alt="Videojuego 1" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Epic Fantasy</h2>
+                    <p class="videojuego-description">
+                        Descripción:
+                        <ul style="text-align: justify;">
+                            <li><strong>Género:</strong> Juego de rol de acción con gráficos impresionantes y una historia envolvente.</li>
+                            <li><strong>Mundo:</strong> Explora un vasto mundo abierto lleno de secretos y misterios por descubrir.</li>
+                            <li><strong>Personajes:</strong> Conviértete en el héroe de la historia y forja tu destino en batallas épicas.</li>
+                        </ul>  
+                    </p>
+                    <p style="text-align: justify;"><strong>Prepárate para una aventura increíble llena de magia y emoción.</strong></p>
+                    <p class="videojuego-price">$950</p>
+                    <div class="botones-container">
+                        <button class="comprar-button">Comprar</button>
+                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Videojuego 2 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego2.png" alt="Videojuego 2" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Reinos de la Eternidad</h2>
+                    <p class="videojuego-description">
+                        Descripción:
+                        <ul style="text-align: justify;">
+                            <li><strong>Género:</strong> Juego de rol de acción con magia y aventura en un lienzo épico.</li>
+                            <li><strong>Mundo:</strong> Descubre un vasto reino lleno de enigmas y criaturas legendarias.</li>
+                            <li><strong>Personajes:</strong> Encarna a un héroe legendario, forja alianzas y desafía a poderosos enemigos.</li>
+                        </ul>  
+                    </p>
+                    <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante llena de combate y magia.</strong></p>
+                    <p class="videojuego-price">$1,150</p>
+                    <div class="botones-container">
+                        <button class="comprar-button">Comprar</button>
+                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Videojuego 3 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego3.png" alt="Videojuego 3" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Tierras Perdidas</h2>
+                    <p class="videojuego-description">
+                        Descripción:
+                        <ul style="text-align: justify;">
+                            <li><strong>Género:</strong> Juego de rol de acción con exploración, supervivencia y misterio.</li>
+                            <li><strong>Mundo:</strong> Un vasto continente con selvas, desiertos y montañas por descubrir.</li>
+                            <li><strong>Personajes:</strong> Forma un equipo de exploradores intrépidos con habilidades únicas.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify;"><strong>Explora un mundo misterioso y desentraña los secretos de una civilización perdida.</strong></p>
+                    <p class="videojuego-price">$1,150</p>
+                    <div class="botones-container">
+                        <button class="comprar-button">Comprar</button>
+                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Videojuego 4 -->
+            <div class="videojuego-item">
+                <img src="images/videojuego4.png" alt="Videojuego 4" class="videojuego-image">
+                <div class="videojuego-details">
+                    <h2 class="videojuego-title">Space Odyssey</h2>
+                    <p class="videojuego-description">
+                        Descripción:
+                        <ul style="text-align: justify;">
+                            <li><strong>Género:</strong> Juego de rol de acción con exploración espacial y combate estratégico.</li>
+                            <li><strong>Mundo:</strong> Un vasto universo con planetas desconocidos y secretos por descubrir.</li>
+                            <li><strong>Personajes:</strong> Elige entre varias clases de personajes y personaliza tu héroe.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify;"><strong>Embárcate en un viaje épico a través del cosmos con una tripulación intrépida.</strong></p>
+                    <p class="videojuego-price">$1,750</p>
+                    <div class="botones-container">
+                        <button class="comprar-button">Comprar</button>
+                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="carrito"></div>
+    </div>
+
+    <script src="js/videojuegos.js"></script>
 </body>
 </html>
