@@ -44,31 +44,50 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    return response;
+    if (event.request.url.includes('/ventas.html')) {
+        event.respondWith(
+            fetch(event.request).then(response => {
+                if (response.ok) {
+                    showNewGameNotification();
                 }
-                return fetch(event.request).then(
-                    function(response) {
-                        // Comprobar si la respuesta es válida
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return caches.match('/offline.html'); // Agregado fallback offline
-                        }
-                        // Clonar la respuesta
-                        var responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then(function(cache) {
-                                cache.put(event.request, responseToCache);
-                            });
-
+                return response;
+            }).catch(() => {
+                return caches.match(event.request);
+            })
+        );
+    } else {
+        event.respondWith(
+            caches.match(event.request)
+                .then(response => {
+                    if (response) {
                         return response;
                     }
-                ).catch(() => {
-                    return caches.match('/offline.html'); // Agregado fallback offline
-                });
-            })
-    );
+                    return fetch(event.request).then(
+                        function(response) {
+                            if (!response || response.status !== 200 || response.type !== 'basic') {
+                                return caches.match('/offline.html');
+                            }
+                            var responseToCache = response.clone();
+                            caches.open(CACHE_NAME)
+                                .then(function(cache) {
+                                    cache.put(event.request, responseToCache);
+                                });
+                            return response;
+                        }
+                    ).catch(() => {
+                        return caches.match('/offline.html');
+                    });
+                })
+        );
+    }
 });
+
+function showNewGameNotification() {
+    const title = '¡Nuevo juego añadido!';
+    const options = {
+        body: '¡Echa un vistazo a nuestra última adición en la sección de ventas!',
+        icon: '/images/icons/icon-192x192.png',
+        badge: '/images/icons/icon-192x192.png'
+    };
+    showNotification(title, options);
+}
