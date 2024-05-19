@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tienda-de-videojuegos-v3'; // Cambiado a v3
+const CACHE_NAME = 'tienda-de-videojuegos-v3';
 const urlsToCache = [
     '/pwa-gamepage.github.io/',
     '/pwa-gamepage.github.io/index.html',
@@ -14,7 +14,6 @@ const urlsToCache = [
     '/pwa-gamepage.github.io/js/app.js',
     '/pwa-gamepage.github.io/js/notificationsHandler.js',
     '/pwa-gamepage.github.io/js/videojuegos.js'
-    // Agrega más archivos CSS, imágenes y scripts según sea necesario
 ];
 
 self.addEventListener('install', event => {
@@ -62,19 +61,16 @@ self.addEventListener('fetch', event => {
                     if (response) {
                         return response;
                     }
-                    return fetch(event.request).then(
-                        function(response) {
-                            if (!response || response.status !== 200 || response.type !== 'basic') {
-                                return caches.match('/pwa-gamepage.github.io/offline.html');
-                            }
-                            var responseToCache = response.clone();
-                            caches.open(CACHE_NAME)
-                                .then(function(cache) {
-                                    cache.put(event.request, responseToCache);
-                                });
-                            return response;
+                    return fetch(event.request).then(response => {
+                        if (!response || response.status !== 200 || response.type !== 'basic') {
+                            return caches.match('/pwa-gamepage.github.io/offline.html');
                         }
-                    ).catch(() => {
+                        var responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then(cache => {
+                            cache.put(event.request, responseToCache);
+                        });
+                        return response;
+                    }).catch(() => {
                         return caches.match('/pwa-gamepage.github.io/offline.html');
                     });
                 })
@@ -89,5 +85,11 @@ function showNewGameNotification() {
         icon: '/pwa-gamepage.github.io/images/icons/icon-192x192.png',
         badge: '/pwa-gamepage.github.io/images/icons/icon-192x192.png'
     };
-    self.registration.showNotification(title, options);
+    showNotification(title, options);
+}
+
+function showNotification(title, options) {
+    if (Notification.permission === 'granted') {
+        self.registration.showNotification(title, options);
+    }
 }
