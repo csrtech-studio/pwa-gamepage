@@ -1,19 +1,19 @@
 const CACHE_NAME = 'tienda-de-videojuegos-v3'; // Cambiado a v3
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/compras.html',
-    '/nosotros.html',
-    '/pago.html',
-    '/ventas.html',
-    '/offline.html',
-    '/css/style.css',
-    '/images/logo.png',
-    '/images/cart-count.png',
-    '/images/icons/image.jpg',
-    '/js/app.js',
-    '/notificaciones.js',
-    '/videojuegos.js'
+    '/pwa-gamepage.github.io/',
+    '/pwa-gamepage.github.io/index.html',
+    '/pwa-gamepage.github.io/compras.html',
+    '/pwa-gamepage.github.io/nosotros.html',
+    '/pwa-gamepage.github.io/pago.html',
+    '/pwa-gamepage.github.io/ventas.html',
+    '/pwa-gamepage.github.io/offline.html',
+    '/pwa-gamepage.github.io/css/style.css',
+    '/pwa-gamepage.github.io/images/logo.png',
+    '/pwa-gamepage.github.io/images/cart-count.png',
+    '/pwa-gamepage.github.io/images/icons/image.jpg',
+    '/pwa-gamepage.github.io/js/app.js',
+    '/pwa-gamepage.github.io/js/notificationsHandler.js',
+    '/pwa-gamepage.github.io/js/videojuegos.js'
     // Agrega más archivos CSS, imágenes y scripts según sea necesario
 ];
 
@@ -65,7 +65,7 @@ self.addEventListener('fetch', event => {
                     return fetch(event.request).then(
                         function(response) {
                             if (!response || response.status !== 200 || response.type !== 'basic') {
-                                return caches.match('/offline.html');
+                                return caches.match('/pwa-gamepage.github.io/offline.html');
                             }
                             var responseToCache = response.clone();
                             caches.open(CACHE_NAME)
@@ -75,7 +75,7 @@ self.addEventListener('fetch', event => {
                             return response;
                         }
                     ).catch(() => {
-                        return caches.match('/offline.html');
+                        return caches.match('/pwa-gamepage.github.io/offline.html');
                     });
                 })
         );
@@ -86,12 +86,8 @@ function showNewGameNotification() {
     const title = '¡Nuevo juego añadido!';
     const options = {
         body: '¡Echa un vistazo a nuestra última adición en la sección de ventas!',
-        icon: '/images/icons/icon-192x192.png',
-        badge: '/images/icons/icon-192x192.png'
+        icon: '/pwa-gamepage.github.io/images/icons/icon-192x192.png',
+        badge: '/pwa-gamepage.github.io/images/icons/icon-192x192.png'
     };
-    showNotification(title, options);
-}
-
-function showNotification(title, options) {
     self.registration.showNotification(title, options);
 }
