@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tienda-de-videojuegos-v3';
+const CACHE_NAME = 'tienda-de-videojuegos-v3'; // Cambiado a v3
 const urlsToCache = [
     '/pwa-gamepage.github.io/',
     '/pwa-gamepage.github.io/index.html',
@@ -14,6 +14,7 @@ const urlsToCache = [
     '/pwa-gamepage.github.io/js/app.js',
     '/pwa-gamepage.github.io/js/notificationsHandler.js',
     '/pwa-gamepage.github.io/js/videojuegos.js'
+    // Agrega más archivos CSS, imágenes y scripts según sea necesario
 ];
 
 self.addEventListener('install', event => {
@@ -40,42 +41,6 @@ self.addEventListener('activate', event => {
             );
         })
     );
-});
-
-self.addEventListener('fetch', event => {
-    if (event.request.url.includes('/ventas.html')) {
-        event.respondWith(
-            fetch(event.request).then(response => {
-                if (response.ok) {
-                    showNewGameNotification();
-                }
-                return response;
-            }).catch(() => {
-                return caches.match(event.request);
-            })
-        );
-    } else {
-        event.respondWith(
-            caches.match(event.request)
-                .then(response => {
-                    if (response) {
-                        return response;
-                    }
-                    return fetch(event.request).then(response => {
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return caches.match('/pwa-gamepage.github.io/offline.html');
-                        }
-                        var responseToCache = response.clone();
-                        caches.open(CACHE_NAME).then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-                        return response;
-                    }).catch(() => {
-                        return caches.match('/pwa-gamepage.github.io/offline.html');
-                    });
-                })
-        );
-    }
 });
 
 function showNewGameNotification() {
