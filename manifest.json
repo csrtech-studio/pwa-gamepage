@@ -2,7 +2,7 @@
   "name": "Tienda de Videojuegos",
   "short_name": "VideoJuegos",
   "description": "Una tienda de videojuegos en línea",
-  "start_url": "/pwa-gamepage.github.io/index.html",
+  "start_url": "https://csrtech-studio.github.io/pwa-gamepage.github.io/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#333333",
