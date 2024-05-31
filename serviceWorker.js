@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tienda-de-videojuegos-v3'; // Cambiado a v3
+const CACHE_NAME = 'tienda-de-videojuegos-v3';
 const urlsToCache = [
     '/pwa-gamepage.github.io/',
     '/pwa-gamepage.github.io/index.html',
@@ -14,7 +14,6 @@ const urlsToCache = [
     '/pwa-gamepage.github.io/js/app.js',
     '/pwa-gamepage.github.io/js/notificationsHandler.js',
     '/pwa-gamepage.github.io/js/videojuegos.js'
-    // Agrega más archivos CSS, imágenes y scripts según sea necesario
 ];
 
 self.addEventListener('install', event => {
@@ -43,18 +42,3 @@ self.addEventListener('activate', event => {
     );
 });
 
-function showNewGameNotification() {
-    const title = '¡Nuevo juego añadido!';
-    const options = {
-        body: '¡Echa un vistazo a nuestra última adición en la sección de ventas!',
-        icon: '/pwa-gamepage.github.io/images/icons/icon-192x192.png',
-        badge: '/pwa-gamepage.github.io/images/icons/icon-192x192.png'
-    };
-    showNotification(title, options);
-}
-
-function showNotification(title, options) {
-    if (Notification.permission === 'granted') {
-        self.registration.showNotification(title, options);
-    }
-}
