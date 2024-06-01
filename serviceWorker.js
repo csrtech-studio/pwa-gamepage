@@ -1,19 +1,20 @@
 const CACHE_NAME = 'tienda-de-videojuegos-v3';
 const urlsToCache = [
-    '/pwa-gamepage.github.io/',
-    '/pwa-gamepage.github.io/index.html',
-    '/pwa-gamepage.github.io/compras.html',
-    '/pwa-gamepage.github.io/nosotros.html',
-    '/pwa-gamepage.github.io/pago.html',
-    '/pwa-gamepage.github.io/ventas.html',
-    '/pwa-gamepage.github.io/offline.html',
-    '/pwa-gamepage.github.io/css/style.css',
-    '/pwa-gamepage.github.io/images/logo.png',
-    '/pwa-gamepage.github.io/images/cart-count.png',
-    '/pwa-gamepage.github.io/images/icons/image.jpg',
-    '/pwa-gamepage.github.io/js/app.js',
-    '/pwa-gamepage.github.io/js/notificationsHandler.js',
-    '/pwa-gamepage.github.io/js/videojuegos.js'
+    '/pwa-gamepage/',
+    '/pwa-gamepage/index.html',
+    '/pwa-gamepage/compras.html',
+    '/pwa-gamepage/nosotros.html',
+    '/pwa-gamepage/pago.html',
+    '/pwa-gamepage/ventas.html',
+    '/pwa-gamepage/offline.html',
+    '/pwa-gamepage/css/style.css',
+    '/pwa-gamepage/images/logo.png',
+    '/pwa-gamepage/images/cart-count.png',
+    '/pwa-gamepage/images/icons/image.jpg',
+    '/pwa-gamepage/images/icons/image.jpg',
+    '/pwa-gamepage/js/app.js',
+    '/pwa-gamepage/js/notificationsHandler.js',
+    '/pwa-gamepage/js/videojuegos.js'
 ];
 
 self.addEventListener('install', event => {
