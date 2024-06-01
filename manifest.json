@@ -8,12 +8,12 @@
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "/pwa-gamepage.github.io/images/icons/icon-192x192.png",
+      "src": "/pwa-gamepage/images/icons/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/pwa-gamepage.github.io/images/icons/icon-512x512.png",
+      "src": "/pwa-gamepage/images/icons/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
