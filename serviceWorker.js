@@ -11,7 +11,7 @@ const urlsToCache = [
     '/pwa-gamepage/images/logo.png',
     '/pwa-gamepage/images/cart-count.png',
     '/pwa-gamepage/images/icons/image.jpg',
-    '/pwa-gamepage/images/icons/image.jpg',
+    '/pwa-gamepage/images/icons/favicon.ico',
     '/pwa-gamepage/js/app.js',
     '/pwa-gamepage/js/notificationsHandler.js',
     '/pwa-gamepage/js/videojuegos.js'
