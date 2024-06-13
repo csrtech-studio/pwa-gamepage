@@ -1,60 +1,57 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda de videojuegos PWA">
-    <title>Tienda de Videojuegos</title>
+    <meta name="description" content="Video Game Store PWA">
+    <title>Video Game Store</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico">
     <script src="js/register-sw.js"></script>
     <script src="js/requestNotificationPermission.js"></script>
-    <script scr="js/ventas-notificaciones.js"></script>
-    
-    
+    <script src="js/ventas-notificaciones.js"></script> <!-- Corrected -->
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo de CSRTechStudio">
+            <img src="images/logo.png" alt="CSRTechStudio Logo">
         </div>
-        <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" id="ventas-link" class="nav-item">Tienda</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="ventas.html" id="ventas-link" class="nav-item">Store</a>
+        <a href="nosotros.html" class="nav-item">About Us</a>
         <div id="cart-button" class="nav-item">
-            <img src="images/cart-count.png" alt="Carrito de Compras">
+            <img src="images/cart-count.png" alt="Shopping Cart">
             <span class="cart-count">0</span>
         </div>
     </nav>
-<body>
     <header> 
-        <div class="intro ">
-            <h1>Bienvenidos a CSRTechStudio</h1>
-            <p>En CSRTechStudio nos dedicamos al desarrollo y venta de videojuegos innovadores y de alta calidad.</p><p> Nuestro equipo de expertos trabaja incansablemente para crear experiencias de juego inolvidables para todas las edades.</p>
+        <div class="intro">
+            <h1>Welcome to CSRTechStudio</h1>
+            <p>At CSRTechStudio, we are dedicated to the development and sale of innovative and high-quality video games. Our team of experts works tirelessly to create unforgettable gaming experiences for all ages.</p>
         </div>
     </header>
     <main>
         <section class="about">
-            <h2>Sobre Nosotros</h2>
-            <p>CSRTechStudio es una empresa líder en la industria de los videojuegos, comprometida con la creación de experiencias únicas e inmersivas. Desde nuestra fundación, hemos lanzado numerosos títulos aclamados por la crítica y los jugadores.</p>
+            <h2>About Us</h2>
+            <p>CSRTechStudio is a leading company in the video game industry, committed to creating unique and immersive experiences. Since our founding, we have launched numerous critically acclaimed titles.</p>
         </section>
         <section class="services">
-            <h2>Nuestros Servicios</h2>
+            <h2>Our Services</h2>
             <ul>
-                <li>Desarrollo de Videojuegos</li>
-                <li>Publicación y Distribución</li>
-                <li>Soporte y Actualizaciones</li>
-                <li>Consultoría en Desarrollo de Juegos</li>
+                <li>Game Development</li>
+                <li>Publishing and Distribution</li>
+                <li>Support and Updates</li>
+                <li>Game Development Consulting</li>
             </ul>
         </section>
         <section class="contact">
-            <h2>Contacto</h2>
-            <p>Para más información, contáctanos a través de nuestro correo electrónico: <a href="mailto:info@csrtechstudio.com">info@csrtechstudio.com</a>.</p>
+            <h2>Contact</h2>
+            <p>For more information, contact us via email: <a href="mailto:info@csrtechstudio.com">info@csrtechstudio.com</a>.</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 CSRTechStudio. Todos los derechos reservados.</p>
+        <p>&copy; 2024 CSRTechStudio. All rights reserved.</p>
     </footer>
     <script src="js/register-sw.js"></script>
     <script src="serviceWorker.js"></script>
