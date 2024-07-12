@@ -1,5 +1,6 @@
-const CACHE_NAME = 'tienda-de-videojuegos-v3';
-const urlsToCache = [
+const VERSION = "v01";
+const CACHE_NAME = `tienda-de-videojuegos-${VERSION}`;
+const appshell = [
     '/pwa-gamepage/',
     '/pwa-gamepage/index.html',
     '/pwa-gamepage/compras.html',
@@ -22,7 +23,7 @@ self.addEventListener('install', event => {
         caches.open(CACHE_NAME)
             .then(cache => {
                 console.log('Cache abierto');
-                return cache.addAll(urlsToCache);
+                return cache.addAll(appshell);
             })
             .catch(err => console.error('Fallo al abrir el cache: ', err))
     );

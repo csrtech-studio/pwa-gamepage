@@ -1,4 +1,3 @@
-// requestNotificationPermission.js
 document.addEventListener('DOMContentLoaded', () => {
     if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
         Notification.requestPermission().then(permission => {
@@ -10,3 +9,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
