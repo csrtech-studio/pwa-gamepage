@@ -567,23 +567,18 @@ form#payment-form input[type="text"]:focus {
   margin-bottom: 20px;
 }
 
-/* Estilos para la página de pago */
+/* Estilos específicos para la página de pago */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url('../images/fondo.png');
-  background-attachment: fixed;
-  background-size: cover;
-  color: #022521;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .navbar {
-  background-color: #333; 
-  padding: 10px 0;
+  background-color: #4CAF50; /* Cambiado a un color verde para diferenciar */
+  padding: 15px 0;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -597,39 +592,35 @@ body {
 .nav-item {
   color: #fff;
   text-decoration: none;
-  padding: 5px 10px; 
+  padding: 10px 20px; /* Ajustado el padding para una mejor apariencia */
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  margin: 0 5px; 
+  margin: 0 10px; /* Margen más amplio */
   display: inline-block;
-  font-size: 14px; 
+  font-size: 16px; /* Fuente ligeramente más grande */
 }
 
 .nav-item:hover {
-  background-color: #555;
-}
-
-.logo {
-  margin-right: 20px;
+  background-color: #45a049; /* Color de hover más claro */
 }
 
 .logo img {
-  width: 50px;
+  width: 60px; /* Tamaño ajustado del logo */
   height: auto;
 }
 
 .container {
-  max-width: 800px;
-  margin: 100px auto 0; /* Añadido margen superior para dar espacio al navbar */
+  max-width: 900px;
+  margin: 100px auto; /* Espacio suficiente desde el navbar */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fff; /* Fondo blanco para la página de pago */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.container h1, .container h2 {
+.container h1 {
   text-align: center;
-  color: #00796b;
+  color: #4CAF50; /* Color verde para el título */
 }
 
 #carrito-lista {
@@ -641,7 +632,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
 }
 
 #total-container {
@@ -650,22 +641,23 @@ body {
 }
 
 #finalizar-compra {
-  padding: 10px 20px;
-  background-color: #28a745;
+  padding: 12px 24px;
+  background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  font-size: 16px; /* Tamaño de fuente ajustado */
 }
 
 #finalizar-compra:hover {
-  background-color: #218838;
+  background-color: #45a049;
 }
 
 form#payment-form {
   margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #fafafa;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -673,13 +665,13 @@ form#payment-form {
 
 form#payment-form label {
   display: block;
-  margin-bottom: 5px;
-  color: #022521;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 form#payment-form input[type="text"] {
   width: calc(100% - 20px);
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -687,67 +679,19 @@ form#payment-form input[type="text"] {
 }
 
 form#payment-form input[type="text"]:focus {
-  border-color: #00796b;
+  border-color: #4CAF50;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(0, 121, 107, 0.2);
 }
 
-.pago-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.columna-izquierda {
-  flex: 1;
-  margin-right: 20px;
-}
-
-.columna-derecha {
-  flex: 1;
-}
-
-.producto-detalle {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.1); 
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.formulario-pago {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0.1); 
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.formulario-pago button {
-  grid-column: span 2;
-  padding: 10px;
-  background-color: #fff; 
-  color: #333; 
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.formulario-pago button:hover {
-  background-color: #f0f0f0; 
-}
-
 @media screen and (max-width: 768px) {
+  .nav-item {
+    padding: 8px 16px;
+    margin: 0 5px;
+    font-size: 14px;
+  }
+
   .container {
     margin-top: 60px;
     padding: 15px;
-  }
-
-  .nav-item {
-    padding: 3px 8px;
-    margin: 0 3px;
-    font-size: 12px;
   }
 }
