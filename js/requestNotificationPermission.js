@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 const opts ={
-                    body : "Ejemplo de Notificacion",
+                    body : "Agregamos un Juego cada semana",
                     icon :"images/icons/favicon.ico"
                 }
                 const titleNotification ="Csr Tech Studio"

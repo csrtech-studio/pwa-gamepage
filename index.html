@@ -1,59 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Video Game Store PWA">
-    <title>Video Game Store</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
-    <script src="js/register-sw.js"></script>
-    <script src="js/requestNotificationPermission.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSRTechStudio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="CSRTechStudio Logo">
+  <header>
+    <div class="logo">
+      <img src="../images/logo.png" alt="Logo CSRTechStudio">
+    </div>
+    <div class="intro">
+      <h1>Welcome to CSRTechStudio</h1>
+      <p>Your one-stop solution for tech solutions and innovation.</p>
+    </div>
+    <div id="cart-button">
+      <img src="../images/cart-icon.png" alt="Carrito de Compras">
+      <div class="cart-count">3</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Our Services</h2>
+      <p>We provide a wide range of tech services...</p>
+    </section>
+
+    <section class="videojuego-list">
+      <div class="videojuego-item">
+        <img src="../images/game1.png" alt="Game 1" class="videojuego-image">
+        <div class="videojuego-details">
+          <h3 class="videojuego-title">Game Title 1</h3>
+          <p class="videojuego-description">Description of the game...</p>
+          <p class="videojuego-price">$19.99</p>
+          <button class="comprar-button">Buy Now</button>
+          <button class="agregar-carrito-button">Add to Cart</button>
         </div>
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="ventas.html" id="ventas-link" class="nav-item">Store</a>
-        <a href="nosotros.html" class="nav-item">About Us</a>
-        <div id="cart-button" class="nav-item">
-            <img src="images/cart-count.png" alt="Shopping Cart">
-            <span class="cart-count">0</span>
-        </div>
-    </nav>
-    <header> 
-        <div class="intro">
-            <h1>Welcome to CSRTechStudio</h1>
-            <p>At CSRTechStudio, we are dedicated to the development and sale of innovative and high-quality video games. Our team of experts works tirelessly to create unforgettable gaming experiences for all ages.</p>
-        </div>
-    </header>
-    <main>
-        <section class="about">
-            <h2>About Us</h2>
-            <p>CSRTechStudio is a leading company in the video game industry, committed to creating unique and immersive experiences. Since our founding, we have launched numerous critically acclaimed titles.</p>
-        </section>
-        <section class="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Game Development</li>
-                <li>Publishing and Distribution</li>
-                <li>Support and Updates</li>
-                <li>Game Development Consulting</li>
-            </ul>
-        </section>
-        <section class="contact">
-            <h2>Contact</h2>
-            <p>For more information, contact us via email: <a href="mailto:info@csrtechstudio.com">info@csrtechstudio.com</a>.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 CSRTechStudio. All rights reserved.</p>
-    </footer>
-    <script src="js/register-sw.js"></script>
-    <script src="serviceWorker.js"></script>
-    <script src="js/notificationsHandler.js"></script>
+      </div>
+      <!-- Repeat for other game items -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 CSRTechStudio. All rights reserved.</p>
+  </footer>
 </body>
 </html>
