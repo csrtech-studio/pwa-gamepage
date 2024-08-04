@@ -16,10 +16,12 @@
         <a href="index.html" class="nav-item">Inicio</a>
         <a href="ventas.html" class="nav-item">Tienda</a>
         <a href="nosotros.html" class="nav-item">Nosotros</a>
-        <div id="cart-button" class="nav-item">
+        <div id="cart-button" class="nav-item" onclick="irACarrito()">
             <img src="images/cart-count.png" alt="Carrito de Compras">
             <span class="cart-count">0</span>
         </div>
+        
+        
     </nav>
    
     <div class="container">
@@ -33,16 +35,16 @@
                     <p class="videojuego-description">
                         Descripción:
                         <ul style="text-align: justify;">
-                            <li><strong>Género:</strong> Juego de rol de acción con gráficos impresionantes y una historia envolvente.</li>
-                            <li><strong>Mundo:</strong> Explora un vasto mundo abierto lleno de secretos y misterios por descubrir.</li>
-                            <li><strong>Personajes:</strong> Conviértete en el héroe de la historia y forja tu destino en batallas épicas.</li>
+                            <li><strong>Género:</strong>Aventura de misterio y acción sobrenatural. </li>
+                            <li><strong>Mundo:</strong>Explora una universidad enigmática donde cada pasillo guarda un secreto oscuro y cada puerta puede llevar a lo desconocido.</li>
+                            <li><strong>Personajes:</strong>Asume el papel de dos intrépidos estudiantes dispuestos a desafiar lo imposible para salvar a su amiga y destapar la verdad.</li>
                         </ul>  
                     </p>
-                    <p style="text-align: justify;"><strong>Prepárate para una aventura increíble llena de magia y emoción.</strong></p>
+                    <p style="text-align: justify;"><strong>Prepárate para desafiar tus miedos, enfrentarte a monstruos aterradores y descubrir una conspiración que cambiará para siempre la percepción de la realidad.</strong></p>
                     <p class="videojuego-price">$950</p>
                     <div class="botones-container">
-                        <button class="comprar-button">Comprar</button>
-                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                        <button class="comprar-button" onclick="comprarAhora('The University of the Damned', 950)">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('The University of the Damned', 950)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
@@ -62,8 +64,8 @@
                     <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante llena de combate y magia.</strong></p>
                     <p class="videojuego-price">$1,150</p>
                     <div class="botones-container">
-                        <button class="comprar-button">Comprar</button>
-                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                        <button class="comprar-button" onclick="comprarAhora('Reinos de la Eternidad', 1150)">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Reinos de la Eternidad', 1150)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
@@ -83,8 +85,8 @@
                     <p style="text-align: justify;"><strong>Explora un mundo misterioso y desentraña los secretos de una civilización perdida.</strong></p>
                     <p class="videojuego-price">$1,150</p>
                     <div class="botones-container">
-                        <button class="comprar-button">Comprar</button>
-                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                        <button class="comprar-button" onclick="comprarAhora('Tierras Perdidas', 1150)">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Tierras Perdidas', 1150)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
@@ -104,8 +106,8 @@
                     <p style="text-align: justify;"><strong>Embárcate en un viaje épico a través del cosmos con una tripulación intrépida.</strong></p>
                     <p class="videojuego-price">$1,750</p>
                     <div class="botones-container">
-                        <button class="comprar-button">Comprar</button>
-                        <button class="agregar-carrito-button">Agregar al carrito</button>
+                        <button class="comprar-button" onclick="comprarAhora('Space Odyssey', 1750)">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Space Odyssey', 1750)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
