@@ -1,36 +1,36 @@
-// Obtener el carrito desde el localStorage
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+// Get the cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Función para actualizar el contador del carrito en el navbar
-function actualizarCarritoUI() {
+// Function to update the cart counter in the navbar
+function updateCartUI() {
     const cartCountElement = document.querySelector('.cart-count');
-    cartCountElement.textContent = carrito.length;
+    cartCountElement.textContent = cart.length;
 }
 
-// Función para agregar al carrito
-function agregarAlCarrito(nombre, precio, imagen) {
-    carrito.push({ nombre, precio, imagen });
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarCarritoUI();
+// Function to add to the cart
+function addToCart(name, price, image) {
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
 }
 
-// Función para ir al carrito
-function irACarrito() {
-    if (carrito.length === 0) {
-        alert('No has agregado aún productos al carrito.');
+// Function to go to the cart
+function goToCart() {
+    if (cart.length === 0) {
+        alert('You have not added any products to the cart yet.');
     } else {
-        window.location.href = 'pago.html'; // Cambia 'pago.html' por la página de pago
+        window.location.href = 'pago.html'; // Change 'pago.html' to the checkout page
     }
 }
 
-// Función para comprar ahora
-function comprarAhora(nombre, precio, imagen) {
-    carrito.push({ nombre, precio, imagen });
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    window.location.href = 'pago.html'; // Cambia 'pago.html' por la página de pago
+// Function to buy now
+function buyNow(name, price, image) {
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'pago.html'; // Change 'pago.html' to the checkout page
 }
 
-// Inicializar el contador del carrito al cargar la página
+// Initialize the cart counter when the page loads
 window.addEventListener('load', () => {
-    actualizarCarritoUI();
+    updateCartUI();
 });

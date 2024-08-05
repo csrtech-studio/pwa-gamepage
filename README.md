@@ -1,16 +1,18 @@
-# Tienda de VideoJuegos PWA
+Here's the README content translated into English:
 
-Este es un proyecto de Tienda de VideoJuegos como una Progressive Web App (PWA).
+# Video Game Store PWA
 
-## Instalación
+This is a Video Game Store project as a Progressive Web App (PWA).
 
-1. Clona este repositorio.
-2. Abre `index.html` en tu navegador.
+## Installation
 
-## Contribuir
+1. Clone this repository.
+2. Open `index.html` in your browser.
 
-Si quieres contribuir a este proyecto, ¡adelante! Puedes abrir un issue o enviar un pull request.
+## Contribute
 
-## Licencia
+If you want to contribute to this project, go ahead! You can open an issue or submit a pull request.
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+## License
+
+This project is under the MIT License. See the LICENSE file for more details.

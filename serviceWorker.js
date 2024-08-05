@@ -1,5 +1,5 @@
 const VERSION = "v01";
-const CACHE_NAME = `tienda-de-videojuegos-${VERSION}`;
+const CACHE_NAME = `video-game-store-${VERSION}`;
 const appshell = [
     '/pwa-gamepage/',
     '/pwa-gamepage/index.html',
@@ -25,10 +25,10 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                console.log('Cache abierto');
+                console.log('Cache opened');
                 return cache.addAll(appshell);
             })
-            .catch(err => console.error('Fallo al abrir el cache: ', err))
+            .catch(err => console.error('Failed to open cache: ', err))
     );
 });
 
@@ -38,7 +38,7 @@ self.addEventListener('activate', event => {
             return Promise.all(
                 cacheNames.map(cacheName => {
                     if (cacheName !== CACHE_NAME) {
-                        console.log('Cache antiguo eliminado:', cacheName);
+                        console.log('Old cache deleted:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
@@ -46,4 +46,3 @@ self.addEventListener('activate', event => {
         })
     );
 });
-

@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página de compras de la Tienda de Videojuegos">
-    <title>Compras - Tienda de Videojuegos</title>
+    <meta name="description" content="Shopping page of the Video Game Store">
+    <title>Shopping - Video Game Store</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo de CSRTechStudio">
+            <img src="images/logo.png" alt="CSRTechStudio Logo">
         </div>
-        <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Tienda</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="sales.html" class="nav-item">Store</a>
+        <a href="about.html" class="nav-item">About Us</a>
         <div id="cart-button" class="nav-item">
-            <img src="images/cart-count.png" alt="Carrito de Compras">
+            <img src="images/cart-count.png" alt="Shopping Cart">
             <span class="cart-count">0</span>
         </div>
     </nav>
-    <h1>Pago</h1>
+    <h1>Payment</h1>
 
-    <div class="pago-container">
-        <div class="columna-izquierda">
-            <h2 class="titulo-seccion">Detalles de la compra</h2>
-            <div class="producto-detalle">
-                <img src="images/videojuego1.jpg" alt="Videojuego 1" class="producto-imagen">
-                <div class="producto-info">
-                    <h3 class="producto-nombre">Epic Fantasy</h3>
-                    <p class="producto-precio">$950</p>
-                    <p>Cantidad: <span class="cantidad">1</span></p>
+    <div class="payment-container">
+        <div class="left-column">
+            <h2 class="section-title">Purchase Details</h2>
+            <div class="product-detail">
+                <img src="images/videojuego1.jpg" alt="Video Game 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Epic Fantasy</h3>
+                    <p class="product-price">$950</p>
+                    <p>Quantity: <span class="quantity">1</span></p>
                 </div>
             </div>
         </div>
-        <div class="columna-derecha">
-            <h3>Total a pagar:</h3>
-            <p class="total-precio">$950</p>
+        <div class="right-column">
+            <h3>Total to Pay:</h3>
+            <p class="total-price">$950</p>
             
-            <form id="formulario-pago" class="formulario-pago">
-                <label for="nombre">Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required>
+            <form id="payment-form" class="payment-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
         
-                <label for="tarjeta">Número de tarjeta:</label>
-                <div class="tarjeta-container">
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
-                    <img src="images/tarjeta-icono.png" alt="Icono de tarjeta">
+                <label for="card">Card Number:</label>
+                <div class="card-container">
+                    <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                    <img src="images/card-icon.png" alt="Card Icon">
                 </div>
         
                 <div class="input-group">
                     <div class="input-group-item">
-                        <label for="vencimiento">Fecha de vencimiento:</label>
-                        <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/YY" required>
+                        <label for="expiration">Expiration Date:</label>
+                        <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required>
                     </div>
                     <div class="input-group-item">
                         <label for="cvv">CVV:</label>
@@ -60,11 +60,11 @@
                     </div>
                 </div>
         
-                <button type="submit" class="realizar-pago">Realizar Pago</button>
+                <button type="submit" class="make-payment">Make Payment</button>
             </form>
         </div>
     </div>
     
-    <script src="js/pago.js"></script>
+    <script src="js/payment.js"></script>
 </body>
 </html>

@@ -1,121 +1,75 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda de videojuegos PWA">
-    <title>Tienda de Videojuegos</title>
-    <link rel="stylesheet" href="css/style.css">   
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"> 
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo de CSRTechStudio">
-        </div>        
-        <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Tienda</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
-        <div id="cart-button" class="nav-item" onclick="irACarrito()">
-            <img src="images/cart-count.png" alt="Carrito de Compras">
-            <span class="cart-count">0</span>
-        </div>
-        
-        
-    </nav>
-   
-    <div class="container">
-        <h1 class="titulo-seccion">Bienvenido a la Tienda de Videojuegos</h1>
-        <div class="videojuego-list">
-            <!-- Videojuego 1 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego1.png" alt="Videojuego 1" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">The University of the Damned</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                        <ul style="text-align: justify;">
-                            <li><strong>Género:</strong>Aventura de misterio y acción sobrenatural. </li>
-                            <li><strong>Mundo:</strong>Explora una universidad enigmática donde cada pasillo guarda un secreto oscuro</li>
-                            <li><strong>Personajes:</strong>Asume el papel de dos intrépidos estudiantes dispuestos a desafiar lo imposible para salvar a su amiga y destapar la verdad.</li>
-                        </ul>  
-                    </p>
-                    <p style="text-align: justify;"><strong>Prepárate para desafiar tus miedos y descubrir la conspiracion que oculta la escuela.</strong></p>
-                    <p class="videojuego-price">$950</p>
-                    <div class="botones-container">
-                        <button class="comprar-button" onclick="comprarAhora('The University of the Damned', 950,'images/videojuego1.png')">Comprar</button>
-                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('The University of the Damned', 950, 'images/videojuego1.png')">Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Videojuego 2 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego2.png" alt="Videojuego 2" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Reinos de la Eternidad</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                        <ul style="text-align: justify;">
-                            <li><strong>Género:</strong> Juego de rol de acción con magia y aventura en un lienzo épico.</li>
-                            <li><strong>Mundo:</strong> Descubre un vasto reino lleno de enigmas y criaturas legendarias.</li>
-                            <li><strong>Personajes:</strong> Encarna a un héroe legendario, forja alianzas y desafía a poderosos enemigos.</li>
-                        </ul>  
-                    </p>
-                    <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante llena de combate y magia.</strong></p>
-                    <p class="videojuego-price">$1,150</p>
-                    <div class="botones-container">
-                        <button class="comprar-button" onclick="comprarAhora('Reinos de la Eternidad', 1150, 'images/videojuego2.png')">Comprar</button>
-                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Reinos de la Eternidad', 1150, 'images/videojuego2.png')">Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Videojuego 3 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego3.png" alt="Videojuego 3" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Tierras Perdidas</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                        <ul style="text-align: justify;">
-                            <li><strong>Género:</strong> Juego de rol de acción con exploración, supervivencia y misterio.</li>
-                            <li><strong>Mundo:</strong> Un vasto continente con selvas, desiertos y montañas por descubrir.</li>
-                            <li><strong>Personajes:</strong> Forma un equipo de exploradores intrépidos con habilidades únicas.</li>
-                        </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Explora un mundo misterioso y desentraña los secretos de una civilización perdida.</strong></p>
-                    <p class="videojuego-price">$1,150</p>
-                    <div class="botones-container">
-                        <button class="comprar-button" onclick="comprarAhora('Tierras Perdidas', 1150, 'images/videojuego3.png')">Comprar</button>
-                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Tierras Perdidas', 1150, 'images/videojuego3.png')">Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Videojuego 4 -->
-            <div class="videojuego-item">
-                <img src="images/videojuego4.png" alt="Videojuego 4" class="videojuego-image">
-                <div class="videojuego-details">
-                    <h2 class="videojuego-title">Space Odyssey</h2>
-                    <p class="videojuego-description">
-                        Descripción:
-                        <ul style="text-align: justify;">
-                            <li><strong>Género:</strong> Juego de rol de acción con exploración espacial y combate estratégico.</li>
-                            <li><strong>Mundo:</strong> Un vasto universo con planetas desconocidos y secretos por descubrir.</li>
-                            <li><strong>Personajes:</strong> Elige entre varias clases de personajes y personaliza tu héroe.</li>
-                        </ul>
-                    </p>
-                    <p style="text-align: justify;"><strong>Embárcate en un viaje épico a través del cosmos con una tripulación intrépida.</strong></p>
-                    <p class="videojuego-price">$1,750</p>
-                    <div class="botones-container">
-                        <button class="comprar-button" onclick="comprarAhora('Space Odyssey', 1750, 'images/videojuego4.png')">Comprar</button>
-                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Space Odyssey', 1750, 'images/videojuego4.png')">Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>,
-        </div>
-        <div id="carrito"></div>
-    </div>
+// Get the cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    <script src="js/videojuegos.js"></script>
-    <script src="js/pago.js"></script>
-</body>
-</html>
+// Display cart items
+function displayCart() {
+    const cartList = document.getElementById('cart-list');
+    cartList.innerHTML = '';
+
+    cart.forEach((game, index) => {
+        const gameElement = document.createElement('div');
+        gameElement.classList.add('game-item');
+        gameElement.innerHTML = `
+            <img src="${game.image}" alt="${game.name}" class="game-image">
+            <p class="game-title">${game.name} - $${game.price}</p>
+            <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartList.appendChild(gameElement);
+    });
+
+    updateTotal();
+}
+
+// Remove a product from the cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    displayCart();
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+}
+
+// Update the total price in the cart
+function updateTotal() {
+    const total = cart.reduce((sum, game) => sum + game.price, 0);
+    const totalElement = document.getElementById('total');
+    totalElement.textContent = total.toFixed(2);
+}
+
+// Verify the payment form
+function verifyPayment(event) {
+    event.preventDefault();
+
+    const cardName = document.getElementById('card-name').value.trim();
+    const cardNumber = document.getElementById('card-number').value.trim();
+    const expiryDate = document.getElementById('expiry-date').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+
+    // Check if all fields are filled
+    if (!cardName || !cardNumber || !expiryDate || !cvv) {
+        alert('Please complete all fields.');
+        return;
+    }
+
+    // If verification passes, show success message
+    alert('Thank you for your purchase!');
+    cart = [];
+    localStorage.removeItem('cart');
+    displayCart();
+    window.location.href = 'index.html'; // Redirect to the home page after purchase
+}
+
+// Update the cart counter in the navbar
+function updateCartUI() {
+    const cartCountElement = document.querySelector('.cart-count');
+    cartCountElement.textContent = cart.length;
+}
+
+// Initialize the page
+window.addEventListener('load', () => {
+    displayCart();
+    updateCartUI();
+
+    // Assign the verifyPayment function to the form
+    const paymentForm = document.getElementById('payment-form');
+    paymentForm.addEventListener('submit', verifyPayment);
+});

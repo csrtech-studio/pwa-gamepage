@@ -1,43 +1,42 @@
-// Obtener el carrito desde el localStorage
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+// Get the cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Mostrar los elementos del carrito
-function mostrarCarrito() {
-    const carritoLista = document.getElementById('carrito-lista');
-    carritoLista.innerHTML = '';
+// Display cart items
+function displayCart() {
+    const cartList = document.getElementById('cart-list');
+    cartList.innerHTML = '';
 
-    carrito.forEach((juego, index) => {
-        const juegoElement = document.createElement('div');
-        juegoElement.classList.add('juego-item');
-        juegoElement.innerHTML = `
-            <img src="${juego.imagen}" alt="${juego.nombre}" class="videojuego-image">
-            <p class="videojuego-title">${juego.nombre} - $${juego.precio}</p>
-            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+    cart.forEach((game, index) => {
+        const gameElement = document.createElement('div');
+        gameElement.classList.add('game-item');
+        gameElement.innerHTML = `
+            <img src="${game.image}" alt="${game.name}" class="game-image">
+            <p class="game-title">${game.name} - $${game.price}</p>
+            <button onclick="removeFromCart(${index})">Remove</button>
         `;
-        carritoLista.appendChild(juegoElement);
+        cartList.appendChild(gameElement);
     });
 
-    actualizarTotal();
+    updateTotal();
 }
 
-
-// Eliminar un producto del carrito
-function eliminarDelCarrito(index) {
-    carrito.splice(index, 1);
-    mostrarCarrito();
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarCarritoUI();
+// Remove a product from the cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    displayCart();
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
 }
 
-// Actualizar el total del carrito
-function actualizarTotal() {
-    const total = carrito.reduce((sum, juego) => sum + juego.precio, 0);
+// Update the total price in the cart
+function updateTotal() {
+    const total = cart.reduce((sum, game) => sum + game.price, 0);
     const totalElement = document.getElementById('total');
     totalElement.textContent = total.toFixed(2);
 }
 
-// Verificar el formulario de pago
-function verificarPago(event) {
+// Verify the payment form
+function verifyPayment(event) {
     event.preventDefault();
 
     const cardName = document.getElementById('card-name').value.trim();
@@ -45,31 +44,32 @@ function verificarPago(event) {
     const expiryDate = document.getElementById('expiry-date').value.trim();
     const cvv = document.getElementById('cvv').value.trim();
 
-    // Verificar que todos los campos estén llenos
+    // Check if all fields are filled
     if (!cardName || !cardNumber || !expiryDate || !cvv) {
-        alert('Por favor, completa todos los campos.');
+        alert('Please complete all fields.');
         return;
     }
 
-    // Si pasa la verificación, mostrar mensaje de éxito
-    alert('¡Gracias por tu compra!');
-    carrito = [];
-    localStorage.removeItem('carrito');
-    mostrarCarrito();
-    window.location.href = 'index.html'; // Redirigir a la página de inicio después de la compra
+    // If verification passes, show success message
+    alert('Thank you for your purchase!');
+    cart = [];
+    localStorage.removeItem('cart');
+    displayCart();
+    window.location.href = 'index.html'; // Redirect to the home page after purchase
 }
 
-// Actualizar el contador del carrito en el navbar
-function actualizarCarritoUI() {
+// Update the cart counter in the navbar
+function updateCartUI() {
     const cartCountElement = document.querySelector('.cart-count');
-    cartCountElement.textContent = carrito.length;
+    cartCountElement.textContent = cart.length;
 }
 
+// Initialize the page
 window.addEventListener('load', () => {
-    mostrarCarrito();
-    actualizarCarritoUI();
+    displayCart();
+    updateCartUI();
 
-    // Asignar la función verificarPago al formulario
+    // Assign the verifyPayment function to the form
     const paymentForm = document.getElementById('payment-form');
-    paymentForm.addEventListener('submit', verificarPago);
+    paymentForm.addEventListener('submit', verifyPayment);
 });
