@@ -364,29 +364,25 @@ body {
   height: auto;
 }
 
-.container_n {
+/* Contenedor principal */
+.container_n, .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;  
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 
-.titulo-seccion{
-  background-color: rgba(2, 0, 121, 0.8); 
-  color: #f7f3f3; 
+.titulo-seccion {
+  background-color: rgba(2, 0, 121, 0.8);
+  color: #f7f3f3;
   text-align: center;
-  display: inline-block; 
   padding: 10px;
   width: 100%;
-  position: relative;
-  bottom: 10;
 }
 
-
 h1, h2 {
-  color: #3700ff; 
+  color: #3700ff;
   text-decoration: solid;
 }
 
@@ -395,39 +391,67 @@ p {
   font-weight: bold;
 }
 
+/* Miembros del equipo */
 .team-member {
+  width: 100%;
   max-width: 900px;
-  margin: 0 auto 20px; 
+  margin: 0 auto 20px;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;  
-  border-radius: 20px; 
+  border-radius: 20px;
   display: flex;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
 .team-member .image-container {
   margin-right: 20px;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .team-member img {
-  width: 100px; 
-  border-radius: 50%; 
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .team-member .info {
+  flex: 1; /* Ocupa el espacio restante */
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
+  flex-direction: column;
+  justify-content: center;
 }
 
 .team-member h2 {
-  font-weight: bold; 
-  margin: 20px;
+  font-weight: bold;
+  margin: 20px 0 10px;
 }
 
 .team-member p {
-  margin: 0px 20px 0; 
+  margin: 0 20px 0;
+}
+
+@media (min-width: 600px) {
+  .team-member {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 599px) {
+  .team-member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .team-member .image-container {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .team-member h2 {
+    margin: 10px 0;
+  }
 }
 /* Estilos generales para la página de pago */
 .container_p {
