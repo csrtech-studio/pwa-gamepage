@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagar</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Enlace al nuevo archivo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
@@ -22,9 +25,13 @@
 
     <div class="container_p">
         <h1>Carrito de Compras</h1>
-        <div id="carrito-lista"></div>
-        <div id="total-container">
-            <h2>Total: $<span id="total"></span></h2>
+        <!-- Contenedor del listado de artículos -->
+        <div id="articulos-container">
+            <h2>Listado de Artículos</h2>
+            <div id="carrito-lista"></div>
+            <div id="total-container">
+                <h2>Total: $<span id="total"></span></h2>
+            </div>
         </div>
 
         <h2>Datos de la Tarjeta de Crédito</h2>
@@ -44,7 +51,7 @@
             <button type="submit" id="finalizar-compra">Finalizar Compra</button>
         </form>
     </div>
-
     <script src="js/pago.js"></script>
 </body>
+
 </html>

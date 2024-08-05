@@ -8,8 +8,8 @@ function actualizarCarritoUI() {
 }
 
 // Función para agregar al carrito
-function agregarAlCarrito(nombre, precio) {
-    carrito.push({ nombre, precio });
+function agregarAlCarrito(nombre, precio, imagen) {
+    carrito.push({ nombre, precio, imagen });
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoUI();
 }
@@ -24,8 +24,8 @@ function irACarrito() {
 }
 
 // Función para comprar ahora
-function comprarAhora(nombre, precio) {
-    carrito.push({ nombre, precio });
+function comprarAhora(nombre, precio, imagen) {
+    carrito.push({ nombre, precio, imagen });
     localStorage.setItem('carrito', JSON.stringify(carrito));
     window.location.href = 'pago.html'; // Cambia 'pago.html' por la página de pago
 }

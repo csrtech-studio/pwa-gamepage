@@ -10,7 +10,8 @@ function mostrarCarrito() {
         const juegoElement = document.createElement('div');
         juegoElement.classList.add('juego-item');
         juegoElement.innerHTML = `
-            <p>${juego.nombre} - $${juego.precio}</p>
+            <img src="${juego.imagen}" alt="${juego.nombre}" class="videojuego-image">
+            <p class="videojuego-title">${juego.nombre} - $${juego.precio}</p>
             <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
         `;
         carritoLista.appendChild(juegoElement);
@@ -18,6 +19,7 @@ function mostrarCarrito() {
 
     actualizarTotal();
 }
+
 
 // Eliminar un producto del carrito
 function eliminarDelCarrito(index) {

@@ -15,7 +15,10 @@ const appshell = [
     '/pwa-gamepage/images/icons/favicon.ico',
     '/pwa-gamepage/js/app.js',
     '/pwa-gamepage/js/notificationsHandler.js',
-    '/pwa-gamepage/js/videojuegos.js'
+    '/pwa-gamepage/js/videojuegos.js',
+    '/pwa-gamepage/js/pago.js',
+    '/pwa-gamepage/js/register-sw.js',
+    '/pwa-gamepage/js/requestNotificationPermission.js'
 ];
 
 self.addEventListener('install', event => {
