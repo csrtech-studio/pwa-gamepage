@@ -17,7 +17,7 @@ function agregarAlCarrito(nombre, precio, imagen) {
 // Función para ir al carrito
 function irACarrito() {
     if (carrito.length === 0) {
-        alert('No has agregado aún productos al carrito.');
+        alert('You have not added any products to the cart yet.');
     } else {
         window.location.href = 'pago.html'; // Cambia 'pago.html' por la página de pago
     }

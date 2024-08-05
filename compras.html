@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Página de compras de la Tienda de Videojuegos">
-    <title>Compras - Tienda de Videojuegos</title>
+    <title>Purchases - Video Game Store</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico">
 </head>
@@ -13,9 +13,9 @@
         <div class="logo">
             <img src="images/logo.png" alt="Logo de CSRTechStudio">
         </div>
-        <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Tienda</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="ventas.html" class="nav-item">Store</a>
+        <a href="nosotros.html" class="nav-item">About Us</a>
         <div id="cart-button" class="nav-item">
             <img src="images/cart-count.png" alt="Carrito de Compras">
             <span class="cart-count">0</span>
@@ -25,7 +25,7 @@
 
     <div class="pago-container">
         <div class="columna-izquierda">
-            <h2 class="titulo-seccion">Detalles de la compra</h2>
+            <h2 class="titulo-seccion">Purchase Details</h2>
             <div class="producto-detalle">
                 <img src="images/videojuego1.jpg" alt="Videojuego 1" class="producto-imagen">
                 <div class="producto-info">
@@ -36,14 +36,14 @@
             </div>
         </div>
         <div class="columna-derecha">
-            <h3>Total a pagar:</h3>
+            <h3>Total to Pay::</h3>
             <p class="total-precio">$950</p>
             
             <form id="formulario-pago" class="formulario-pago">
-                <label for="nombre">Nombre completo:</label>
+                <label for="nombre">Full Name:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required>
         
-                <label for="tarjeta">Número de tarjeta:</label>
+                <label for="tarjeta">Card Number:</label>
                 <div class="tarjeta-container">
                     <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
                     <img src="images/tarjeta-icono.png" alt="Icono de tarjeta">
@@ -51,7 +51,7 @@
         
                 <div class="input-group">
                     <div class="input-group-item">
-                        <label for="vencimiento">Fecha de vencimiento:</label>
+                        <label for="vencimiento">Expiration Date:</label>
                         <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/YY" required>
                     </div>
                     <div class="input-group-item">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
         
-                <button type="submit" class="realizar-pago">Realizar Pago</button>
+                <button type="submit" class="realizar-pago">Make Payment</button>
             </form>
         </div>
     </div>

@@ -14,9 +14,9 @@
         <div class="logo">
             <img src="images/logo.png" alt="Logo de CSRTechStudio">
         </div>
-        <a href="index.html" class="nav-item">Inicio</a>
-        <a href="ventas.html" class="nav-item">Tienda</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="ventas.html" class="nav-item">Store</a>
+        <a href="nosotros.html" class="nav-item">About Us</a>
         <div id="cart-button" class="nav-item">
             <img src="images/cart-count.png" alt="Carrito de Compras">
             <span class="cart-count">0</span>
@@ -24,31 +24,31 @@
     </nav>
 
     <div class="container_p">
-        <h1>Carrito de Compras</h1>
+        <h1>Shopping Cart</h1>
         <!-- Contenedor del listado de artículos -->
         <div id="articulos-container">
-            <h2>Listado de Artículos</h2>
+            <h2>List of Items</h2>
             <div id="carrito-lista"></div>
             <div id="total-container">
                 <h2>Total: $<span id="total"></span></h2>
             </div>
         </div>
 
-        <h2>Datos de la Tarjeta de Crédito</h2>
+        <h2>Credit Card Information</h2>
         <form id="payment-form">
-            <label for="card-name">Nombre del Titular:</label>
+            <label for="card-name">Cardholder Name:</label>
             <input type="text" id="card-name" required>
 
-            <label for="card-number">Número de Tarjeta:</label>
+            <label for="card-number">Card Number:</label>
             <input type="text" id="card-number" required pattern="\d{16}" maxlength="16" placeholder="1234 5678 9012 3456">
 
-            <label for="expiry-date">Fecha de Vencimiento:</label>
+            <label for="expiry-date">Expiration Date:</label>
             <input type="text" id="expiry-date" required pattern="\d{2}/\d{2}" maxlength="5" placeholder="MM/AA">
 
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" required pattern="\d{3}" maxlength="3" placeholder="123">
 
-            <button type="submit" id="finalizar-compra">Finalizar Compra</button>
+            <button type="submit" id="finalizar-compra">Finalize Purchase</button>
         </form>
     </div>
     <script src="js/pago.js"></script>
