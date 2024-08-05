@@ -407,12 +407,7 @@ p {
 
 .team-member .image-container {
   margin-right: 20px;
-  flex-shrink: 0; 
-}
-
-.team-member img {
-  width: 100px; 
-  border-radius: 50%; 
+  flex-shrink: 0;
 }
 
 .team-member img {
@@ -421,7 +416,6 @@ p {
   border-radius: 50%;
   object-fit: cover;
 }
-
 .team-member h2 {
   font-weight: bold; 
   margin: 20px;
@@ -430,8 +424,6 @@ p {
 .team-member p {
   margin: 0px 20px 0; 
 }
-
-
 @media (min-width: 600px) {
   .team-member {
     flex-direction: row;
@@ -444,6 +436,8 @@ p {
     align-items: center;
     text-align: center;
   }
+
+}
 /* Estilos generales para la página de pago */
 .container_p {
   text-align: center; 
