@@ -46,7 +46,7 @@ header {
 
 .intro {
   flex-grow: 0; 
-  align-self: center;
+  text-align: center; 
   
 }
 
@@ -154,56 +154,104 @@ footer {
 /* Estilos para la lista de videojuegos */
 .videojuego-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
-  margin-top: 80px; /* Ajuste del margen superior para compensar la altura del navbar */
+  margin-top: 40px; /* Ajuste del margen superior para compensar la altura del navbar */
 }
 
 /* Estilos para cada elemento de videojuego */
 .videojuego-item {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: space-between; /* Asegura que el contenido y los botones estén separados */
   align-items: center; 
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Ajusta la altura según sea necesario */
+  width: 100%; /* Asegura que el contenedor se ajuste al ancho disponible */
+  text-align: center; /* Centra el texto y los botones */
+  padding: 10px;
+  box-sizing: border-box; /* Incluye padding en el cálculo del ancho y alto */
 }
 
+/* Imagen del videojuego */
 .videojuego-image {
-  max-width: 80%;
-  height: auto;
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: 200px; /* Ajusta la altura de la imagen según sea necesario */
+  object-fit: cover; /* Mantiene la proporción de la imagen y cubre el área del contenedor */
   border-radius: 5px 5px 0 0; 
 }
 
-.videojuego-item:hover {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
-}
-
-.videojuego-item:hover {
-  background-color: rgba(194, 247, 184, 0.8);
-}
-
+/* Detalles del videojuego */
 .videojuego-details {
-  padding: 10px;
   flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido dentro de los detalles */
+  text-align: center; /* Centra el texto */
 }
 
+/* Título del videojuego */
 .videojuego-title {
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 18px; /* Asegura que el título sea visible */
 }
 
+/* Descripción del videojuego */
 .videojuego-description {
   margin-top: 10px;
   color: #666;
+  font-size: 14px; /* Asegura que la descripción sea visible */
 }
 
+/* Precio del videojuego */
 .videojuego-price {
-  color: #4CAF50;
+  color: #570202;
   font-weight: bold;
+  margin: 10px 0;
+  font-size: 16px; /* Asegura que el precio sea visible */
+}
+
+/* Contenedor de botones */
+.botones-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+/* Botones */
+.comprar-button, .agregar-carrito-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comprar-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.agregar-carrito-button {
+  background-color: #2196F3;
+  color: white;
+}
+
+.comprar-button:hover {
+  background-color: #45a049; /* Color más oscuro al pasar el ratón */
+}
+
+.agregar-carrito-button:hover {
+  background-color: #1e88e5; /* Color más oscuro al pasar el ratón */
 }
 
 /* Estilos para el botón de compra */
@@ -381,42 +429,133 @@ p {
 .team-member p {
   margin: 0px 20px 0; 
 }
-
-/* Pago */
-#carrito-lista {
-  margin-bottom: 20px;
+/* Estilos generales para la página de pago */
+.container_p {
+  text-align: center; 
+  max-width: 800px; /* Ajusta el tamaño máximo del contenedor */
+  margin: 40px auto; /* Centra el contenedor en la página */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Color de fondo más neutro */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-#total-container {
-  margin-bottom: 20px;
+/* Estilos para el contenedor de carrito */
+#carrito-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para el título del carrito */
+#container_p h1 {
+  text-align: center; /* Centra el texto del título */
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilos para el formulario de pago */
 #payment-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 500px; /* Limita el ancho del formulario */
+  margin: 0 auto; /* Centra el formulario */
 }
 
+/* Estilos para las etiquetas del formulario */
 #payment-form label {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
+  color: #333;
 }
 
+/* Estilos para los campos de entrada del formulario */
 #payment-form input {
   margin-bottom: 15px;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 16px;
 }
 
+/* Estilos para el botón de finalizar compra */
 #finalizar-compra {
   background-color: #4CAF50;
   color: white;
-  padding: 10px;
+  padding: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 #finalizar-compra:hover {
   background-color: #45a049;
 }
+
+/* Estilos para el total del carrito */
+#total-container {
+  margin-bottom: 20px;
+  text-align: center; /* Centra el texto del total */
+}
+
+#total-container h2 {
+  font-size: 20px;
+  color: #333;
+}
+
+/* ---------------------------*/
+
+.juego-image {
+  width: 50px; /* Ajusta según el tamaño deseado */
+  height: auto; /* Mantiene la proporción */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* ---------------------------*/
+/* Estilo para el contenedor de los artículos en el carrito */
+#articulos-container {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+#carrito-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.juego-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.juego-item img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.juego-item .videojuego-title {
+  flex-grow: 1;
+  margin: 0;
+}
+
+.juego-item .botones-container {
+  margin-left: auto;
+}
+
+.juego-item button {
+  margin-left: 5px;
+}
+
+
