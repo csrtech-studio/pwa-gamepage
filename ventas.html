@@ -1,114 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Video Game Store PWA">
-    <title>Video Game Store</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico">
+    <meta name="description" content="Tienda de videojuegos PWA">
+    <title>Tienda de Videojuegos</title>
+    <link rel="stylesheet" href="css/style.css">   
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"> 
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/logo.png" alt="CSRTechStudio Logo">
-        </div>
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="ventas.html" class="nav-item">Store</a>
-        <a href="nosotros.html" class="nav-item">About Us</a>
-        <div id="cart-button" class="nav-item" onclick="goToCart()">
-            <img src="images/cart-count.png" alt="Shopping Cart">
+            <img src="images/logo.png" alt="Logo de CSRTechStudio">
+        </div>        
+        <a href="index.html" class="nav-item">Inicio</a>
+        <a href="ventas.html" class="nav-item">Tienda</a>
+        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <div id="cart-button" class="nav-item" onclick="irACarrito()">
+            <img src="images/cart-count.png" alt="Carrito de Compras">
             <span class="cart-count">0</span>
         </div>
+        
+        
     </nav>
-
+   
     <div class="container">
-        <h1 class="titulo-seccion">Welcome to the Video Game Store</h1>
+        <h1 class="titulo-seccion">Bienvenido a la Tienda de Videojuegos</h1>
         <div class="videojuego-list">
-            <!-- Video Game 1 -->
+            <!-- Videojuego 1 -->
             <div class="videojuego-item">
-                <img src="images/videojuego1.png" alt="Video Game 1" class="videojuego-image">
+                <img src="images/videojuego1.png" alt="Videojuego 1" class="videojuego-image">
                 <div class="videojuego-details">
                     <h2 class="videojuego-title">The University of the Damned</h2>
                     <p class="videojuego-description">
-                        Description:
+                        Descripción:
                         <ul style="text-align: justify;">
-                            <li><strong>Genre:</strong> Mystery adventure and supernatural action.</li>
-                            <li><strong>World:</strong> Explore an enigmatic university where every hallway holds a dark secret.</li>
-                            <li><strong>Characters:</strong> Take on the role of two intrepid students willing to challenge the impossible to save their friend and uncover the truth.</li>
-                        </ul>
+                            <li><strong>Género:</strong>Aventura de misterio y acción sobrenatural. </li>
+                            <li><strong>Mundo:</strong>Explora una universidad enigmática donde cada pasillo guarda un secreto oscuro</li>
+                            <li><strong>Personajes:</strong>Asume el papel de dos intrépidos estudiantes dispuestos a desafiar lo imposible para salvar a su amiga y destapar la verdad.</li>
+                        </ul>  
                     </p>
-                    <p style="text-align: justify;"><strong>Get ready to challenge your fears and uncover the conspiracy hiding in the school.</strong></p>
+                    <p style="text-align: justify;"><strong>Prepárate para desafiar tus miedos y descubrir la conspiracion que oculta la escuela.</strong></p>
                     <p class="videojuego-price">$950</p>
                     <div class="botones-container">
-                        <button class="comprar-button" onclick="buyNow('The University of the Damned', 950, 'images/videojuego1.png')">Buy</button>
-                        <button class="agregar-carrito-button" onclick="addToCart('The University of the Damned', 950, 'images/videojuego1.png')">Add to Cart</button>
+                        <button class="comprar-button" onclick="comprarAhora('The University of the Damned', 950,'images/videojuego1.png')">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('The University of the Damned', 950, 'images/videojuego1.png')">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
-            <!-- Video Game 2 -->
+            <!-- Videojuego 2 -->
             <div class="videojuego-item">
-                <img src="images/videojuego2.png" alt="Video Game 2" class="videojuego-image">
+                <img src="images/videojuego2.png" alt="Videojuego 2" class="videojuego-image">
                 <div class="videojuego-details">
-                    <h2 class="videojuego-title">Realms of Eternity</h2>
+                    <h2 class="videojuego-title">Reinos de la Eternidad</h2>
                     <p class="videojuego-description">
-                        Description:
+                        Descripción:
                         <ul style="text-align: justify;">
-                            <li><strong>Genre:</strong> Action RPG with magic and adventure on an epic canvas.</li>
-                            <li><strong>World:</strong> Discover a vast kingdom full of enigmas and legendary creatures.</li>
-                            <li><strong>Characters:</strong> Become a legendary hero, forge alliances, and challenge powerful enemies.</li>
-                        </ul>
+                            <li><strong>Género:</strong> Juego de rol de acción con magia y aventura en un lienzo épico.</li>
+                            <li><strong>Mundo:</strong> Descubre un vasto reino lleno de enigmas y criaturas legendarias.</li>
+                            <li><strong>Personajes:</strong> Encarna a un héroe legendario, forja alianzas y desafía a poderosos enemigos.</li>
+                        </ul>  
                     </p>
-                    <p style="text-align: justify;"><strong>Get ready for an exciting experience full of combat and magic.</strong></p>
+                    <p style="text-align: justify;"><strong>Prepárate para una experiencia emocionante llena de combate y magia.</strong></p>
                     <p class="videojuego-price">$1,150</p>
                     <div class="botones-container">
-                        <button class="comprar-button" onclick="buyNow('Realms of Eternity', 1150, 'images/videojuego2.png')">Buy</button>
-                        <button class="agregar-carrito-button" onclick="addToCart('Realms of Eternity', 1150, 'images/videojuego2.png')">Add to Cart</button>
+                        <button class="comprar-button" onclick="comprarAhora('Reinos de la Eternidad', 1150, 'images/videojuego2.png')">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Reinos de la Eternidad', 1150, 'images/videojuego2.png')">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
-            <!-- Video Game 3 -->
+            <!-- Videojuego 3 -->
             <div class="videojuego-item">
-                <img src="images/videojuego3.png" alt="Video Game 3" class="videojuego-image">
+                <img src="images/videojuego3.png" alt="Videojuego 3" class="videojuego-image">
                 <div class="videojuego-details">
-                    <h2 class="videojuego-title">Lost Lands</h2>
+                    <h2 class="videojuego-title">Tierras Perdidas</h2>
                     <p class="videojuego-description">
-                        Description:
+                        Descripción:
                         <ul style="text-align: justify;">
-                            <li><strong>Genre:</strong> Action RPG with exploration, survival, and mystery.</li>
-                            <li><strong>World:</strong> A vast continent with jungles, deserts, and mountains to explore.</li>
-                            <li><strong>Characters:</strong> Form a team of intrepid explorers with unique skills.</li>
+                            <li><strong>Género:</strong> Juego de rol de acción con exploración, supervivencia y misterio.</li>
+                            <li><strong>Mundo:</strong> Un vasto continente con selvas, desiertos y montañas por descubrir.</li>
+                            <li><strong>Personajes:</strong> Forma un equipo de exploradores intrépidos con habilidades únicas.</li>
                         </ul>
                     </p>
-                    <p style="text-align: justify;"><strong>Explore a mysterious world and unravel the secrets of a lost civilization.</strong></p>
+                    <p style="text-align: justify;"><strong>Explora un mundo misterioso y desentraña los secretos de una civilización perdida.</strong></p>
                     <p class="videojuego-price">$1,150</p>
                     <div class="botones-container">
-                        <button class="comprar-button" onclick="buyNow('Lost Lands', 1150, 'images/videojuego3.png')">Buy</button>
-                        <button class="agregar-carrito-button" onclick="addToCart('Lost Lands', 1150, 'images/videojuego3.png')">Add to Cart</button>
+                        <button class="comprar-button" onclick="comprarAhora('Tierras Perdidas', 1150, 'images/videojuego3.png')">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Tierras Perdidas', 1150, 'images/videojuego3.png')">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
-            <!-- Video Game 4 -->
+            <!-- Videojuego 4 -->
             <div class="videojuego-item">
-                <img src="images/videojuego4.png" alt="Video Game 4" class="videojuego-image">
+                <img src="images/videojuego4.png" alt="Videojuego 4" class="videojuego-image">
                 <div class="videojuego-details">
                     <h2 class="videojuego-title">Space Odyssey</h2>
                     <p class="videojuego-description">
-                        Description:
+                        Descripción:
                         <ul style="text-align: justify;">
-                            <li><strong>Genre:</strong> Action RPG with space exploration and strategic combat.</li>
-                            <li><strong>World:</strong> A vast universe with unknown planets and secrets to uncover.</li>
-                            <li><strong>Characters:</strong> Choose from various character classes and customize your hero.</li>
+                            <li><strong>Género:</strong> Juego de rol de acción con exploración espacial y combate estratégico.</li>
+                            <li><strong>Mundo:</strong> Un vasto universo con planetas desconocidos y secretos por descubrir.</li>
+                            <li><strong>Personajes:</strong> Elige entre varias clases de personajes y personaliza tu héroe.</li>
                         </ul>
                     </p>
-                    <p style="text-align: justify;"><strong>Embark on an epic journey through the cosmos with an intrepid crew.</strong></p>
+                    <p style="text-align: justify;"><strong>Embárcate en un viaje épico a través del cosmos con una tripulación intrépida.</strong></p>
                     <p class="videojuego-price">$1,750</p>
                     <div class="botones-container">
-                        <button class="comprar-button" onclick="buyNow('Space Odyssey', 1750, 'images/videojuego4.png')">Buy</button>
-                        <button class="agregar-carrito-button" onclick="addToCart('Space Odyssey', 1750, 'images/videojuego4.png')">Add to Cart</button>
+                        <button class="comprar-button" onclick="comprarAhora('Space Odyssey', 1750, 'images/videojuego4.png')">Comprar</button>
+                        <button class="agregar-carrito-button" onclick="agregarAlCarrito('Space Odyssey', 1750, 'images/videojuego4.png')">Agregar al carrito</button>
                     </div>
                 </div>
-            </div>
+            </div>,
         </div>
         <div id="carrito"></div>
     </div>

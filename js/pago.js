@@ -1,42 +1,42 @@
 // Get the cart from localStorage
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 // Display cart items
-function displayCart() {
-    const cartList = document.getElementById('cart-list');
-    cartList.innerHTML = '';
+function mostrarCarrito() {
+    const carritoLista = document.getElementById('carrito-lista');
+    carritoLista.innerHTML = '';
 
-    cart.forEach((game, index) => {
-        const gameElement = document.createElement('div');
-        gameElement.classList.add('game-item');
-        gameElement.innerHTML = `
-            <img src="${game.image}" alt="${game.name}" class="game-image">
-            <p class="game-title">${game.name} - $${game.price}</p>
-            <button onclick="removeFromCart(${index})">Remove</button>
+    carrito.forEach((juego, index) => {
+        const juegoElement = document.createElement('div');
+        juegoElement.classList.add('juego-item');
+        juegoElement.innerHTML = `
+            <img src="${juego.imagen}" alt="${juego.nombre}" class="videojuego-image">
+            <p class="videojuego-title">${juego.nombre} - $${juego.precio}</p>
+            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
         `;
-        cartList.appendChild(gameElement);
+        carritoLista.appendChild(juegoElement);
     });
 
-    updateTotal();
+    actualizarTotal();
 }
 
 // Remove a product from the cart
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    displayCart();
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartUI();
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1);
+    mostrarCarrito();
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
 }
 
 // Update the total price in the cart
-function updateTotal() {
-    const total = cart.reduce((sum, game) => sum + game.price, 0);
+function actualizarTotal() {
+    const total = carrito.reduce((sum, juego) => sum + juego.precio, 0);
     const totalElement = document.getElementById('total');
     totalElement.textContent = total.toFixed(2);
 }
 
 // Verify the payment form
-function verifyPayment(event) {
+function verificarPago(event) {
     event.preventDefault();
 
     const cardName = document.getElementById('card-name').value.trim();
@@ -52,24 +52,24 @@ function verifyPayment(event) {
 
     // If verification passes, show success message
     alert('Thank you for your purchase!');
-    cart = [];
-    localStorage.removeItem('cart');
-    displayCart();
+    carrito = [];
+    localStorage.removeItem('carrito');
+    mostrarCarrito();
     window.location.href = 'index.html'; // Redirect to the home page after purchase
 }
 
 // Update the cart counter in the navbar
-function updateCartUI() {
+function actualizarCarritoUI() {
     const cartCountElement = document.querySelector('.cart-count');
-    cartCountElement.textContent = cart.length;
+    cartCountElement.textContent = carrito.length;
 }
 
 // Initialize the page
 window.addEventListener('load', () => {
-    displayCart();
-    updateCartUI();
+    mostrarCarrito();
+    actualizarCarritoUI();
 
-    // Assign the verifyPayment function to the form
+    // Assign the verificarPago function to the form
     const paymentForm = document.getElementById('payment-form');
-    paymentForm.addEventListener('submit', verifyPayment);
+    paymentForm.addEventListener('submit', verificarPago);
 });
