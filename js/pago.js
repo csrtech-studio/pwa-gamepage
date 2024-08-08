@@ -43,19 +43,20 @@ function verificarPago(event) {
     const cardNumber = document.getElementById('card-number').value.trim();
     const expiryDate = document.getElementById('expiry-date').value.trim();
     const cvv = document.getElementById('cvv').value.trim();
+    const email = document.getElementById('email').value.trim();
 
     // Check if all fields are filled
-    if (!cardName || !cardNumber || !expiryDate || !cvv) {
+    if (!cardName || !cardNumber || !expiryDate || !cvv ||!email) {
         alert('Please complete all fields.');
         return;
     }
 
     // If verification passes, show success message
-    alert('Thank you for your purchase!');
+    alert('Thank you for your purchase!  Your product will arrive at the email you registered!');
     carrito = [];
     localStorage.removeItem('carrito');
     mostrarCarrito();
-    window.location.href = 'index.html'; // Redirect to the home page after purchase
+    window.location.href = 'ventas.html'; // Redirect to the home page after purchase
 }
 
 // Update the cart counter in the navbar
