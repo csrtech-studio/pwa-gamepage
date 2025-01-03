@@ -34,9 +34,10 @@
         <input type="number" id="tds" name="tds" placeholder="Ejemplo: 350" required><br><br>
 
         <label for="imageCount">Cantidad de Equipos a Instalar:</label>
-        <input type="number" id="imageCount" name="imageCount" min="1" max="50" placeholder="Cantidad" required><br><br>
+        <input type="number" id="imageCount" name="imageCount" min="1" max="50"  placeholder="Cantidad" required><br><br>
 
-        <div id="imagesContainer" class="miniaturas-container"></div>
+
+        <div id="imagesContainer"></div>
 
 
         <button type="button" id="locationButton" style="margin-top: 10px;">Guardar Ubicación</button>
@@ -51,10 +52,6 @@
         <button type="submit" id="submitBtn">Guardar</button>
     </form>
 
-    <div id="uploadContainer">
-        <label>Guardando Videos Favor de Esperar..</label>
-        <!-- Aquí se mostrarán los progresos de los videos -->
-    </div>
 
     <section id="filters-section" class="mb-5">
         <h2 class="text-center">Filtros</h2>
@@ -95,6 +92,8 @@
     </table>  
 
     <script type="module" src="js/vendedores.js"></script>
+
+    
 </body>
 
 </html>

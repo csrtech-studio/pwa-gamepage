@@ -29,90 +29,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Aplicar filtro automáticamente al cargar la página
     filterSales();
- 
+
 });
 
-document.getElementById("imageCount").addEventListener("input", function () {
-    const imageCount = parseInt(this.value) || 0;
-    const imagesContainer = document.getElementById("imagesContainer");
 
-    // Limpiar contenedor de imágenes
-    imagesContainer.innerHTML = "";
+// Función para capturar imagen usando la cámara
+function captureImage(containerId) {
+    const miniaturasContainer = document.getElementById(containerId);
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+            const video = document.createElement("video");
+            video.srcObject = stream;
+            video.play();
 
-    // Generar campos de imagen dinámicamente
-    for (let i = 1; i <= imageCount; i++) {
-        const imageWrapper = document.createElement("div");
-        imageWrapper.classList.add("image-wrapper");
+            const canvas = document.createElement("canvas");
+            const captureBtn = document.createElement("button");
+            captureBtn.textContent = "Capturar";
+            captureBtn.classList.add("capture-btn");
 
-        const labelArea = document.createElement("label");
-        labelArea.setAttribute("for", `imageArea${i}`);
-        labelArea.textContent = `Área de la imagen ${i}:`;
+            captureBtn.addEventListener("click", () => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext("2d").drawImage(video, 0, 0);
+                const imageUrl = canvas.toDataURL("image/png");
 
-        const inputArea = document.createElement("input");
-        inputArea.type = "text";
-        inputArea.id = `imageArea${i}`;
-        inputArea.name = `imageArea${i}`;
-        inputArea.placeholder = `Área de la imagen ${i}`;
-        inputArea.required = true;
+                const img = document.createElement("img");
+                img.src = imageUrl;
+                miniaturasContainer.appendChild(img);
 
-        const labelWater = document.createElement("label");
-        labelWater.setAttribute("for", `waterInput${i}`);
-        labelWater.textContent = `Toma de agua ${i}:`;
+                // Agregar botón de eliminar a cada imagen
+                const deleteImgBtn = document.createElement("button");
+                deleteImgBtn.textContent = "X";
+                deleteImgBtn.classList.add("delete-miniatura-btn");
+                deleteImgBtn.addEventListener("click", () => {
+                    img.remove(); // Eliminar imagen individual
+                    deleteImgBtn.remove(); // Eliminar botón también
+                });
+                img.parentNode.appendChild(deleteImgBtn);
 
-        const inputWater = document.createElement("input");
-        inputWater.type = "text";
-        inputWater.id = `waterInput${i}`;
-        inputWater.name = `waterInput${i}`;
-        inputWater.placeholder = `Toma de agua ${i}`;
-        inputWater.required = true;
+                stream.getTracks().forEach(track => track.stop());
+                video.remove();
+                captureBtn.remove();
+                canvas.remove();
+            });
 
-        const labelDrain = document.createElement("label");
-        labelDrain.setAttribute("for", `drainInput${i}`);
-        labelDrain.textContent = `Toma de desagüe ${i}:`;
-
-        const inputDrain = document.createElement("input");
-        inputDrain.type = "text";
-        inputDrain.id = `drainInput${i}`;
-        inputDrain.name = `drainInput${i}`;
-        inputDrain.placeholder = `Toma de desagüe ${i}`;
-        inputDrain.required = true;
-
-        const labelImage = document.createElement("label");
-        labelImage.setAttribute("for", `imageFile${i}`);
-        labelImage.textContent = `Imagen del área ${i}:`;
-
-        const inputImage = document.createElement("input");
-        inputImage.type = "file";
-        inputImage.accept = "image/*";
-        inputImage.id = `imageFile${i}`;
-        inputImage.name = `imageFile${i}`;
-        inputImage.required = true;
-
-        const miniaturasContainer = document.createElement("div");
-        miniaturasContainer.id = `miniaturasContainer${i}`;
-        miniaturasContainer.classList.add("miniaturas-container");
-
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "X";
-        deleteBtn.classList.add("delete-btn");
-        deleteBtn.addEventListener("click", () => {
-            imageWrapper.remove(); // Eliminar campo dinámico
+            video.addEventListener("play", () => {
+                miniaturasContainer.appendChild(video);
+                miniaturasContainer.appendChild(captureBtn);
+            });
+        })
+        .catch((err) => {
+            console.error("Error al acceder a la cámara:", err);
         });
+}
 
-        imageWrapper.appendChild(labelArea);
-        imageWrapper.appendChild(inputArea);
-        imageWrapper.appendChild(labelWater);
-        imageWrapper.appendChild(inputWater);
-        imageWrapper.appendChild(labelDrain);
-        imageWrapper.appendChild(inputDrain);
-        imageWrapper.appendChild(labelImage);
-        imageWrapper.appendChild(inputImage);
-        imageWrapper.appendChild(miniaturasContainer);
-        imageWrapper.appendChild(deleteBtn);
-
-        imagesContainer.appendChild(imageWrapper);
-    }
-});
 
 // Botón para obtener ubicación
 document.addEventListener("DOMContentLoaded", function () {
@@ -192,48 +162,30 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSalesData();  // Cargar los datos después de que el DOM esté listo
 });
 
+/////////////////////////Botond e Guardar/////////////////////////////
 document.getElementById("submitBtn").addEventListener("click", async (event) => {
-    event.preventDefault(); // Previene que el formulario se recargue
+    event.preventDefault();
 
     const submitButton = document.getElementById("submitBtn");
     submitButton.disabled = true;
 
     try {
-        // Obtener datos del formulario
         const dateInput = document.getElementById("date");
         const sellerInput = document.getElementById("seller");
         const companyInput = document.getElementById("company");
         const tdsInput = document.getElementById("tds");
         const contactInput = document.getElementById("contact");
         const phoneInput = document.getElementById("cellphone");
-        const imageCountInput = document.getElementById("imageCount");
 
-        const date = dateInput ? dateInput.value : null;
-        const seller = sellerInput ? sellerInput.value : null;
-        const company = companyInput ? companyInput.value : null;
-        const tdsValue = tdsInput ? tdsInput.value : null;
-        const contact = contactInput ? contactInput.value : null;
-        const phone = phoneInput ? phoneInput.value : null;
-        let imageCount = imageCountInput ? parseInt(imageCountInput.value) || 0 : 0;
+        const date = dateInput?.value || null;
+        const seller = sellerInput?.value || null;
+        const company = companyInput?.value || null;
+        const tdsValue = tdsInput?.value || null;
+        const contact = contactInput?.value || null;
+        const phone = phoneInput?.value || null;
 
-        if (!date || !seller || !company || !tdsValue || !contact || !phone || imageCount <= 0) {
-            let missingFields = [];
-
-            if (!date) missingFields.push("Fecha");
-            if (!seller) missingFields.push("Vendedor");
-            if (!company) missingFields.push("Compañía");
-            if (!tdsValue) missingFields.push("TDS");
-            if (!contact) missingFields.push("Contacto");
-            if (!phone) missingFields.push("Teléfono");
-            if (imageCount <= 0) missingFields.push("Cantidad de imágenes");
-
-            alert("Por favor, completa los siguientes campos: " + missingFields.join(", "));
-            submitButton.disabled = false;
-            return;
-        }
-
-        if (imageCount < 1 || imageCount > 50) {
-            alert("La cantidad de imágenes debe estar entre 1 y 50.");
+        if (!date || !seller || !company || !tdsValue || !contact || !phone) {
+            alert("Por favor, completa todos los campos obligatorios.");
             submitButton.disabled = false;
             return;
         }
@@ -243,119 +195,60 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
             submitButton.disabled = false;
             return;
         }
-        
-        document.getElementById("imageCount").addEventListener("input", function () {
-            const imageCount = parseInt(this.value) || 0;
-            const imagesContainer = document.getElementById("imagesContainer");
-        
-            // Limpiar contenedor de imágenes
-            imagesContainer.innerHTML = "";
-        
-            // Generar campos de imagen dinámicamente
-            for (let i = 1; i <= imageCount; i++) {
-                const imageWrapper = document.createElement("div");
-                imageWrapper.classList.add("image-wrapper");
-        
-                const labelArea = document.createElement("label");
-                labelArea.setAttribute("for", `imageArea${i}`);
-                labelArea.textContent = `Área de la imagen ${i}:`;
-        
-                const inputArea = document.createElement("input");
-                inputArea.type = "text";
-                inputArea.id = `imageArea${i}`;
-                inputArea.name = `imageArea${i}`;
-                inputArea.placeholder = `Área de la imagen ${i}`;
-                inputArea.required = true;
-        
-                const labelWater = document.createElement("label");
-                labelWater.setAttribute("for", `waterInput${i}`);
-                labelWater.textContent = `Toma de agua ${i}:`;
-        
-                const inputWater = document.createElement("input");
-                inputWater.type = "text";
-                inputWater.id = `waterInput${i}`;
-                inputWater.name = `waterInput${i}`;
-                inputWater.placeholder = `Toma de agua ${i}`;
-                inputWater.required = true;
-        
-                const labelDrain = document.createElement("label");
-                labelDrain.setAttribute("for", `drainInput${i}`);
-                labelDrain.textContent = `Toma de desagüe ${i}:`;
-        
-                const inputDrain = document.createElement("input");
-                inputDrain.type = "text";
-                inputDrain.id = `drainInput${i}`;
-                inputDrain.name = `drainInput${i}`;
-                inputDrain.placeholder = `Toma de desagüe ${i}`;
-                inputDrain.required = true;
-        
-                const labelImage = document.createElement("label");
-                labelImage.setAttribute("for", `imageFile${i}`);
-                labelImage.textContent = `Imagen del área ${i}:`;
-        
-                const inputImage = document.createElement("input");
-                inputImage.type = "file";
-                inputImage.accept = "image/*;capture=camera"; // 'capture=camera' habilita acceso a la cámara
-                inputImage.id = `imageFile${i}`;
-                inputImage.name = `imageFile${i}`;
-                inputImage.required = true;
-        
-                const miniaturasContainer = document.createElement("div");
-                miniaturasContainer.id = `miniaturasContainer${i}`;
-                miniaturasContainer.classList.add("miniaturas-container");
-        
-                const deleteBtn = document.createElement("button");
-                deleteBtn.textContent = "X";
-                deleteBtn.classList.add("delete-btn");
-                deleteBtn.addEventListener("click", () => {
-                    imageWrapper.remove(); // Eliminar campo dinámico
-                });
-        
-                imageWrapper.appendChild(labelArea);
-                imageWrapper.appendChild(inputArea);
-                imageWrapper.appendChild(labelWater);
-                imageWrapper.appendChild(inputWater);
-                imageWrapper.appendChild(labelDrain);
-                imageWrapper.appendChild(inputDrain);
-                imageWrapper.appendChild(labelImage);
-                imageWrapper.appendChild(inputImage);
-                imageWrapper.appendChild(miniaturasContainer);
-                imageWrapper.appendChild(deleteBtn);
-        
-                imagesContainer.appendChild(imageWrapper);
-            }
-        });
-        
-        
-        
 
-        await Promise.all(imageUploads);
+        const imageCount = parseInt(document.getElementById("imageCount").value) || 0;
+        const imagesObject = {};
+
+        document.getElementById("progressContainer").style.display = "block";
+
+        for (let i = 1; i <= imageCount; i++) {
+            const imageInput = document.getElementById(`image${i}`);
+
+            if (imageInput && imageInput.files && imageInput.files[0]) {
+                const imageFile = imageInput.files[0];
+                const imagePath = `sales_installations/image_${i}_${Date.now()}.png`;
+                const imageRef = storageRef(storage, imagePath);
+
+                await new Promise((resolve, reject) => {
+                    const uploadTask = uploadBytesResumable(imageRef, imageFile);
+
+                    uploadTask.on(
+                        "state_changed",
+                        (snapshot) => {
+                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            console.log(`Progreso de subida para image${i}: ${Math.round(progress)}%`);
+                        },
+                        (error) => reject(error),
+                        async () => {
+                            const downloadURL = await getDownloadURL(imageRef);
+                            imagesObject[`image${i}`] = { imageUrl: downloadURL };
+                            resolve();
+                        }
+                    );
+                });
+            }
+        }
+
         document.getElementById("progressContainer").style.display = "none";
 
-        // Generar UID único
-        const uid = '_' + Math.random().toString(36).substr(2, 9);
-
-        // Crear el objeto con los datos a guardar
         const newEntry = {
-            uid, // Incluir el UID único
             date,
             seller,
             company,
             tds: tdsValue,
             contact,
             phone,
-            images: imageData,
+            images: imagesObject,
             location: userLocation,
         };
 
-        // Guardar los datos en Firebase
         await push(ref(db, "sales_installations"), newEntry);
 
         alert("Registro guardado exitosamente.");
         clearForm();
     } catch (error) {
         console.error("Error al guardar el registro:", error);
-        alert("Ocurrió un error al guardar el registro. Verifica la consola para más detalles.");
+        alert("Ocurrió un error al guardar el registro.");
     } finally {
         submitButton.disabled = false;
     }
@@ -364,46 +257,193 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
 });
 
 
-function showUploadProgress(videoIndex, percentage, totalVideos) {
-    const uploadContainer = document.getElementById('uploadContainer');
-    uploadContainer.style.display = 'block'; // Mostrar el contenedor
 
-    // Verifica si ya existe un elemento de progreso para este video
-    let videoProgress = document.getElementById(`videoProgress${videoIndex}`);
-    if (!videoProgress) {
-        videoProgress = document.createElement('div');
-        videoProgress.id = `videoProgress${videoIndex}`;
-        videoProgress.style.marginBottom = '10px'; // Espaciado entre progresos
-        videoProgress.style.textAlign = 'center'; // Centrar texto
-        uploadContainer.appendChild(videoProgress);
+
+
+
+///////Contenedor de imagenes dinamicas////
+document.getElementById("imageCount").addEventListener("input", function () {
+    const imageCount = parseInt(this.value) || 0;
+    const imagesContainer = document.getElementById("imagesContainer");
+
+    // Limpiar contenedor de imágenes
+    imagesContainer.innerHTML = "";
+
+    // Generar campos de imagen dinámicamente
+    for (let i = 1; i <= imageCount; i++) {
+        const fields = [
+            { label: "Área", id: `areaImage${i}`, placeholder: `Área ${i}` },
+            { label: "Toma de agua", id: `waterImage${i}`, placeholder: `Toma de agua ${i}` },
+            { label: "Toma de desagüe", id: `drainImage${i}`, placeholder: `Toma de desagüe ${i}` },
+            { label: "Adicional", id: `extraImage${i}`, placeholder: `Información adicional ${i}` },
+        ];
+
+        fields.forEach(({ label, id, placeholder }) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("image-field");
+
+            const fieldLabel = document.createElement("label");
+            fieldLabel.setAttribute("for", id);
+            fieldLabel.textContent = `${label} ${i}:`;
+
+            const textInput = document.createElement("input");
+            textInput.type = "text";
+            textInput.id = id;
+            textInput.name = id;
+            textInput.placeholder = placeholder;
+            textInput.required = true;
+
+            const fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.accept = "image/*";
+            fileInput.id = id;
+            fileInput.name = id;
+            fileInput.required = true;
+
+            const cameraBtn = document.createElement("button");
+            cameraBtn.textContent = "Tomar Imagen";
+            cameraBtn.classList.add("camera-btn");
+            cameraBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                captureImage(id); // Aquí debes tener implementada la función `captureImage`
+            });
+
+            wrapper.appendChild(fieldLabel);
+            wrapper.appendChild(textInput);
+            wrapper.appendChild(fileInput);
+            wrapper.appendChild(cameraBtn);
+
+            imagesContainer.appendChild(wrapper);
+        });
+    }
+});
+
+////Boton Guardar////
+
+document.getElementById("submitBtn").addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const submitButton = document.getElementById("submitBtn");
+    submitButton.disabled = true;
+
+    try {
+        const dateInput = document.getElementById("date");
+        const sellerInput = document.getElementById("seller");
+        const companyInput = document.getElementById("company");
+        const tdsInput = document.getElementById("tds");
+        const contactInput = document.getElementById("contact");
+        const phoneInput = document.getElementById("cellphone");
+        const imageCountInput = document.getElementById("imageCount");
+
+        const date = dateInput?.value.trim();
+        const seller = sellerInput?.value.trim();
+        const company = companyInput?.value.trim();
+        const tdsValue = tdsInput?.value.trim();
+        const contact = contactInput?.value.trim();
+        const phone = phoneInput?.value.trim();
+        const imageCount = imageCountInput?.value.trim() || 0;
+
+        let missingFields = [];
+
+        if (!date) missingFields.push("Fecha");
+        if (!seller) missingFields.push("Vendedor");
+        if (!company) missingFields.push("Compañía");
+        if (!tdsValue) missingFields.push("TDS");
+        if (!contact) missingFields.push("Contacto");
+        if (!phone) missingFields.push("Teléfono");
+        if (!imageCount || imageCount <= 0) missingFields.push("Cantidad de Equipos a Instalar");
+
+        for (let i = 1; i <= imageCount; i++) {
+            const textInput = document.getElementById(`areaImage${i}`) || document.getElementById(`waterImage${i}`) || document.getElementById(`drainImage${i}`) || document.getElementById(`extraImage${i}`);
+            const imageInput = document.getElementById(`areaImage${i}`) || document.getElementById(`waterImage${i}`) || document.getElementById(`drainImage${i}`) || document.getElementById(`extraImage${i}`);
+
+            if (textInput && textInput.value.trim() === "") {
+                missingFields.push(`Nombre de Image ${i}`);
+            }
+
+            if (imageInput && (!imageInput.files || !imageInput.files[0])) {
+                missingFields.push(`Imagen de Image ${i}`);
+            }
+        }
+
+        if (missingFields.length > 0) {
+            alert(`Por favor, completa los siguientes campos obligatorios: ${missingFields.join(', ')}`);
+            submitButton.disabled = false;
+            return;
+        }
+
+        if (!userLocation) {
+            alert("Por favor, guarda la ubicación antes de enviar el formulario.");
+            submitButton.disabled = false;
+            return;
+        }
+
+        const imagesObject = {};
+
+        document.getElementById("progressContainer").style.display = "block";
+
+        for (let i = 1; i <= imageCount; i++) {
+            const imageInput = document.getElementById(`areaImage${i}`) || document.getElementById(`waterImage${i}`) || document.getElementById(`drainImage${i}`) || document.getElementById(`extraImage${i}`);
+
+            if (imageInput && imageInput.files && imageInput.files[0]) {
+                const imageFile = imageInput.files[0];
+                const imagePath = `sales_installations/image_${i}_${Date.now()}.png`;
+                const imageRef = storageRef(storage, imagePath);
+
+                await new Promise((resolve, reject) => {
+                    const uploadTask = uploadBytesResumable(imageRef, imageFile);
+
+                    uploadTask.on(
+                        "state_changed",
+                        (snapshot) => {
+                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            console.log(`Progreso de subida para image${i}: ${Math.round(progress)}%`);
+                        },
+                        (error) => reject(error),
+                        async () => {
+                            const downloadURL = await getDownloadURL(imageRef);
+                            imagesObject[`image${i}`] = { imageUrl: downloadURL };
+                            resolve();
+                        }
+                    );
+                });
+            } else {
+                missingFields.push(`Imagen de Image ${i}`);
+            }
+        }
+
+        if (missingFields.length > 0) {
+            alert(`Por favor, completa los siguientes campos obligatorios: ${missingFields.join(', ')}`);
+            submitButton.disabled = false;
+            return;
+        }
+
+        document.getElementById("progressContainer").style.display = "none";
+
+        const newEntry = {
+            date,
+            seller,
+            company,
+            tds: tdsValue,
+            contact,
+            phone,
+            images: imagesObject,
+            location: userLocation,
+        };
+
+        await push(ref(db, "sales_installations"), newEntry);
+
+        alert("Registro guardado exitosamente.");
+        clearForm();
+    } catch (error) {
+        console.error("Error al guardar el registro:", error);
+        alert("Ocurrió un error al guardar el registro.");
+    } finally {
+        submitButton.disabled = false;
     }
 
-    // Actualizar el progreso del video actual
-    videoProgress.innerHTML = `
-        <strong>Video ${videoIndex}:</strong> ${percentage}%
-        ${percentage >= 100 ? '<span style="color: green;">(Completado)</span>' : ''}
-    `;
-
-    // Si todos los videos están cargados, mostrar un mensaje final
-    const completedVideos = document.querySelectorAll('#uploadContainer div span[style="color: green;"]').length;
-    if (completedVideos === totalVideos) {
-        setTimeout(() => {
-            uploadContainer.innerHTML = `
-                <p style="color: green; font-weight: bold; text-align: center;">
-                    ¡Todos los videos se han cargado exitosamente!
-                </p>
-            `;
-            setTimeout(() => {
-                uploadContainer.style.display = 'none'; // Ocultar después de unos segundos
-                alert("Registro guardado exitosamente.");
-            }, 1000);
-        }, 1000);
-    }   
-}
-
-
-
-
+    loadSalesData();
+});
 
 
 // Limpiar formulario
@@ -411,8 +451,8 @@ function clearForm() {
     const form = document.querySelector("form");
     if (form) form.reset();
 
-    const videosContainer = document.getElementById("videosContainer");
-    if (videosContainer) videosContainer.innerHTML = "";
+    const imagesContainer = document.getElementById("imagesContainer");
+    if (imagesContainer) imagesContainer.innerHTML = "";
 
     userLocation = null;
     locationButton.disabled = false;
@@ -442,7 +482,6 @@ function loadSalesData() {
                     <td>${sale.date}</td>
                     <td>${sale.seller}</td>
                     <td>${sale.company}</td>
-                    <td>${sale.branch}</td>
                     <td><button data-uid="${id}">Ver</button></td>
                 `;
 
@@ -483,7 +522,7 @@ function filterSales() {
     const dateFilter = document.getElementById("searchDate")?.value || "";
     const sellerFilter = normalizeString(document.getElementById("searchseller")?.value || "");
     const companyFilter = normalizeString(document.getElementById("searchCompany")?.value || "");
-    const branchFilter = normalizeString(document.getElementById("searchBranch")?.value || "");
+
 
     const queryRef = ref(db, "sales_installations"); // Cambia "sales" por el nodo de tu base de datos
     onValue(queryRef, (snapshot) => {
@@ -499,15 +538,14 @@ function filterSales() {
                 const matchesDate = dateFilter ? data.date === dateFilter : true;
                 const matchesSeller = sellerFilter ? normalizeString(sale.seller || "").includes(sellerFilter) : true;
                 const matchesCompany = companyFilter ? normalizeString(sale.company || "").includes(companyFilter) : true;
-                const matchesBranch = branchFilter ? normalizeString(sale.branch || "").includes(branchFilter) : true;
 
-                if (matchesDate && matchesSeller && matchesCompany && matchesBranch) {
+
+                if (matchesDate && matchesSeller && matchesCompany) {
                     rows += `
                         <tr>
                             <td>${sale.date || "N/A"}</td>
                             <td>${sale.seller || "N/A"}</td>
                             <td>${sale.company || "N/A"}</td>
-                            <td>${sale.branch || "N/A"}</td>
                         </tr>
                     `;
                 }
@@ -525,7 +563,6 @@ document.getElementById("clearFilter")?.addEventListener("click", () => {
     document.getElementById("searchDate").value = "";
     document.getElementById("searchseller").value = "";
     document.getElementById("searchCompany").value = "";
-    document.getElementById("searchBranch").value = "";
 
     loadSalesData(); // Recargar todos los registros
 });
