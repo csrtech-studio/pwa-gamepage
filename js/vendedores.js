@@ -33,57 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Función para capturar imagen usando la cámara
-function captureImage(containerId) {
-    const miniaturasContainer = document.getElementById(containerId);
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-            const video = document.createElement("video");
-            video.srcObject = stream;
-            video.play();
-
-            const canvas = document.createElement("canvas");
-            const captureBtn = document.createElement("button");
-            captureBtn.textContent = "Capturar";
-            captureBtn.classList.add("capture-btn");
-
-            captureBtn.addEventListener("click", () => {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                const imageUrl = canvas.toDataURL("image/png");
-
-                const img = document.createElement("img");
-                img.src = imageUrl;
-                miniaturasContainer.appendChild(img);
-
-                // Agregar botón de eliminar a cada imagen
-                const deleteImgBtn = document.createElement("button");
-                deleteImgBtn.textContent = "X";
-                deleteImgBtn.classList.add("delete-miniatura-btn");
-                deleteImgBtn.addEventListener("click", () => {
-                    img.remove(); // Eliminar imagen individual
-                    deleteImgBtn.remove(); // Eliminar botón también
-                });
-                img.parentNode.appendChild(deleteImgBtn);
-
-                stream.getTracks().forEach(track => track.stop());
-                video.remove();
-                captureBtn.remove();
-                canvas.remove();
-            });
-
-            video.addEventListener("play", () => {
-                miniaturasContainer.appendChild(video);
-                miniaturasContainer.appendChild(captureBtn);
-            });
-        })
-        .catch((err) => {
-            console.error("Error al acceder a la cámara:", err);
-        });
-}
-
-
 // Botón para obtener ubicación
 document.addEventListener("DOMContentLoaded", function () {
     const salesForm = document.getElementById("salesForm");
@@ -162,106 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSalesData();  // Cargar los datos después de que el DOM esté listo
 });
 
-/////////////////////////Botond e Guardar/////////////////////////////
-document.getElementById("submitBtn").addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    const submitButton = document.getElementById("submitBtn");
-    submitButton.disabled = true;
-
-    try {
-        const dateInput = document.getElementById("date");
-        const sellerInput = document.getElementById("seller");
-        const companyInput = document.getElementById("company");
-        const tdsInput = document.getElementById("tds");
-        const contactInput = document.getElementById("contact");
-        const phoneInput = document.getElementById("cellphone");
-
-        const date = dateInput?.value || null;
-        const seller = sellerInput?.value || null;
-        const company = companyInput?.value || null;
-        const tdsValue = tdsInput?.value || null;
-        const contact = contactInput?.value || null;
-        const phone = phoneInput?.value || null;
-
-        if (!date || !seller || !company || !tdsValue || !contact || !phone) {
-            alert("Por favor, completa todos los campos obligatorios.");
-            submitButton.disabled = false;
-            return;
-        }
-
-        if (!userLocation) {
-            alert("Por favor, guarda la ubicación antes de enviar el formulario.");
-            submitButton.disabled = false;
-            return;
-        }
-
-        const imageCount = parseInt(document.getElementById("imageCount").value) || 0;
-        const imagesObject = {};
-
-        document.getElementById("progressContainer").style.display = "block";
-
-        for (let i = 1; i <= imageCount; i++) {
-            const imageInput = document.getElementById(`image${i}`);
-
-            if (imageInput && imageInput.files && imageInput.files[0]) {
-                const imageFile = imageInput.files[0];
-                const imagePath = `sales_installations/image_${i}_${Date.now()}.png`;
-                const imageRef = storageRef(storage, imagePath);
-
-                await new Promise((resolve, reject) => {
-                    const uploadTask = uploadBytesResumable(imageRef, imageFile);
-
-                    uploadTask.on(
-                        "state_changed",
-                        (snapshot) => {
-                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                            console.log(`Progreso de subida para image${i}: ${Math.round(progress)}%`);
-                        },
-                        (error) => reject(error),
-                        async () => {
-                            const downloadURL = await getDownloadURL(imageRef);
-                            imagesObject[`image${i}`] = { imageUrl: downloadURL };
-                            resolve();
-                        }
-                    );
-                });
-            }
-        }
-
-        document.getElementById("progressContainer").style.display = "none";
-
-        const newEntry = {
-            date,
-            seller,
-            company,
-            tds: tdsValue,
-            contact,
-            phone,
-            images: imagesObject,
-            location: userLocation,
-        };
-
-        await push(ref(db, "sales_installations"), newEntry);
-
-        alert("Registro guardado exitosamente.");
-        clearForm();
-    } catch (error) {
-        console.error("Error al guardar el registro:", error);
-        alert("Ocurrió un error al guardar el registro.");
-    } finally {
-        submitButton.disabled = false;
-    }
-
-    loadSalesData();
-});
-
-
-
-
-
-
-///////Contenedor de imagenes dinamicas////
+///////Contenedor de imagenes dinamicas y abrir camara////
 document.getElementById("imageCount").addEventListener("input", function () {
     const imageCount = parseInt(this.value) || 0;
     const imagesContainer = document.getElementById("imagesContainer");
@@ -296,13 +146,29 @@ document.getElementById("imageCount").addEventListener("input", function () {
             const fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = "image/*";
+            fileInput.capture = "camera"; // Esto solicita acceso a la cámara
             fileInput.id = id;
             fileInput.name = id;
-            fileInput.dataset.files = JSON.stringify([]); // Inicializar un arreglo vacío para almacenar archivos
 
-            fileInput.addEventListener("change", () => {
-                const files = Array.from(fileInput.files);
-                fileInput.dataset.files = JSON.stringify(files); // Guardar los archivos como string en atributo de datos
+            fileInput.addEventListener("change", async () => {
+                try {
+                    const files = Array.from(fileInput.files);
+                    const fileUrls = [];
+
+                    for (const file of files) {
+                        const imagePath = `sales_installations/${id}_${Date.now()}.png`;
+                        const imageRef = storageRef(storage, imagePath);
+
+                        const uploadTask = await uploadBytesResumable(imageRef, file);
+                        const downloadURL = await getDownloadURL(imageRef);
+
+                        fileUrls.push(downloadURL);
+                    }
+
+                    fileInput.dataset.files = JSON.stringify(fileUrls); // Guardar URLs de imágenes como string en atributo de datos
+                } catch (error) {
+                    console.error("Error al subir la imagen:", error);
+                }
             });
 
             wrapper.appendChild(fieldLabel);
@@ -313,8 +179,6 @@ document.getElementById("imageCount").addEventListener("input", function () {
         });
     }
 });
-
-
 ////Boton Guardar////
 
 document.getElementById("submitBtn").addEventListener("click", async (event) => {
