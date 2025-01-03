@@ -272,9 +272,9 @@ document.getElementById("imageCount").addEventListener("input", function () {
     // Generar campos de imagen dinámicamente
     for (let i = 1; i <= imageCount; i++) {
         const fields = [
-            { label: "Área", id: `areaImage${i}`, placeholder: `Área ${i}` },
             { label: "Toma de agua", id: `waterImage${i}`, placeholder: `Toma de agua ${i}` },
             { label: "Toma de desagüe", id: `drainImage${i}`, placeholder: `Toma de desagüe ${i}` },
+            { label: "Área", id: `areaImage${i}`, placeholder: `Área ${i}` },
             { label: "Adicional", id: `extraImage${i}`, placeholder: `Información adicional ${i}` },
         ];
 
@@ -298,25 +298,22 @@ document.getElementById("imageCount").addEventListener("input", function () {
             fileInput.accept = "image/*";
             fileInput.id = id;
             fileInput.name = id;
-            fileInput.required = true;
+            fileInput.dataset.files = JSON.stringify([]); // Inicializar un arreglo vacío para almacenar archivos
 
-            const cameraBtn = document.createElement("button");
-            cameraBtn.textContent = "Tomar Imagen";
-            cameraBtn.classList.add("camera-btn");
-            cameraBtn.addEventListener("click", (event) => {
-                event.preventDefault();
-                captureImage(id); // Aquí debes tener implementada la función `captureImage`
+            fileInput.addEventListener("change", () => {
+                const files = Array.from(fileInput.files);
+                fileInput.dataset.files = JSON.stringify(files); // Guardar los archivos como string en atributo de datos
             });
 
             wrapper.appendChild(fieldLabel);
             wrapper.appendChild(textInput);
             wrapper.appendChild(fileInput);
-            wrapper.appendChild(cameraBtn);
 
             imagesContainer.appendChild(wrapper);
         });
     }
 });
+
 
 ////Boton Guardar////
 
