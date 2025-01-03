@@ -216,6 +216,48 @@ tr:hover {
     text-align: center; /* Centrar el texto */
 }
 
+.miniaturas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espaciado entre imágenes */
+  margin-top: 10px;
+}
+
+.miniatura {
+  position: relative;
+  display: inline-block;
+  max-width: 100px; /* Tamaño máximo de la miniatura */
+  max-height: 100px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+}
+
+.miniatura img {
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
 
 
 #uploadBox {

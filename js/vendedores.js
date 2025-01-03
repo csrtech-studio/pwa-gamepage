@@ -192,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSalesData();  // Cargar los datos después de que el DOM esté listo
 });
 
-// Boton para Guardar el Formulario
 document.getElementById("submitBtn").addEventListener("click", async (event) => {
     event.preventDefault(); // Previene que el formulario se recargue
 
@@ -244,200 +243,291 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
             submitButton.disabled = false;
             return;
         }
-
-        const imageUploads = [];
-        const imageData = [];
-
-        document.getElementById("progressContainer").style.display = "block";
-
-        for (let i = 1; i <= imageCount; i++) {
-            const areaInput = document.getElementById(`imageArea${i}`);
-            const imageInput = document.getElementById(`imageFile${i}`);
-            const waterInput = document.getElementById(`waterInput${i}`); // Campo para toma de agua
-            const drainInput = document.getElementById(`drainInput${i}`); // Campo para desagüe
-            const miniaturasContainer = document.getElementById(`miniaturasContainer${i}`);
         
-            let area = areaInput?.value.trim();
-            let water = waterInput?.value.trim(); // Valor para toma de agua
-            let drain = drainInput?.value.trim(); // Valor para desagüe
+        document.getElementById("imageCount").addEventListener("input", function () {
+            const imageCount = parseInt(this.value) || 0;
+            const imagesContainer = document.getElementById("imagesContainer");
         
-            if (!area) {
-                alert(`El área para las imágenes ${i} no está especificada. Por favor, ingresa un valor.`);
-                submitButton.disabled = false;
-                return;
-            }
+            // Limpiar contenedor de imágenes
+            imagesContainer.innerHTML = "";
         
-            if (!water) {
-                alert(`La toma de agua para el área ${i} no está especificada. Por favor, ingresa un valor.`);
-                submitButton.disabled = false;
-                return;
-            }
+            // Generar campos de imagen dinámicamente
+            for (let i = 1; i <= imageCount; i++) {
+                const imageWrapper = document.createElement("div");
+                imageWrapper.classList.add("image-wrapper");
         
-            if (!drain) {
-                alert(`El desagüe para el área ${i} no está especificado. Por favor, ingresa un valor.`);
-                submitButton.disabled = false;
-                return;
-            }
+                const labelArea = document.createElement("label");
+                labelArea.setAttribute("for", `imageArea${i}`);
+                labelArea.textContent = `Área de la imagen ${i}:`;
         
-            if (imageInput?.files.length === 0) {
-                alert(`Por favor selecciona una imagen para el área ${i}.`);
-                submitButton.disabled = false;
-                return;
-            }
+                const inputArea = document.createElement("input");
+                inputArea.type = "text";
+                inputArea.id = `imageArea${i}`;
+                inputArea.name = `imageArea${i}`;
+                inputArea.placeholder = `Área de la imagen ${i}`;
+                inputArea.required = true;
         
-            const imageFile = imageInput.files[0];
+                const labelWater = document.createElement("label");
+                labelWater.setAttribute("for", `waterInput${i}`);
+                labelWater.textContent = `Toma de agua ${i}:`;
         
-            const imageStorageRef = storageRef(storage, `images/${imageFile.name}`);
-            const uploadTask = uploadBytesResumable(imageStorageRef, imageFile);
+                const inputWater = document.createElement("input");
+                inputWater.type = "text";
+                inputWater.id = `waterInput${i}`;
+                inputWater.name = `waterInput${i}`;
+                inputWater.placeholder = `Toma de agua ${i}`;
+                inputWater.required = true;
         
-            uploadTask.on('state_changed', (snapshot) => {
-                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                document.getElementById(`progress${i}`).textContent = `Progreso: ${Math.round(progress)}%`;
-            });
+                const labelDrain = document.createElement("label");
+                labelDrain.setAttribute("for", `drainInput${i}`);
+                labelDrain.textContent = `Toma de desagüe ${i}:`;
         
-            uploadTask.then(async () => {
-                const downloadURL = await getDownloadURL(imageStorageRef);
-                imageData.push({
-                    area: area,
-                    water: water,
-                    drain: drain,
-                    url: downloadURL,
+                const inputDrain = document.createElement("input");
+                inputDrain.type = "text";
+                inputDrain.id = `drainInput${i}`;
+                inputDrain.name = `drainInput${i}`;
+                inputDrain.placeholder = `Toma de desagüe ${i}`;
+                inputDrain.required = true;
+        
+                const labelImage = document.createElement("label");
+                labelImage.setAttribute("for", `imageFile${i}`);
+                labelImage.textContent = `Imagen del área ${i}:`;
+        
+                const inputImage = document.createElement("input");
+                inputImage.type = "file";
+                inputImage.accept = "image/*;capture=camera"; // 'capture=camera' habilita acceso a la cámara
+                inputImage.id = `imageFile${i}`;
+                inputImage.name = `imageFile${i}`;
+                inputImage.required = true;
+        
+                const miniaturasContainer = document.createElement("div");
+                miniaturasContainer.id = `miniaturasContainer${i}`;
+                miniaturasContainer.classList.add("miniaturas-container");
+        
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "X";
+                deleteBtn.classList.add("delete-btn");
+                deleteBtn.addEventListener("click", () => {
+                    imageWrapper.remove(); // Eliminar campo dinámico
                 });
         
-                if (imageData.length === imageCount) {
-                    await saveSalesData(date, seller, company, tdsValue, contact, phone, imageData, userLocation);
-                    alert("Datos guardados exitosamente.");
-                    submitButton.disabled = false;
-                }
-            }).catch((error) => {
-                console.error("Error al subir la imagen:", error);
-                alert("Hubo un error al subir la imagen. Inténtalo de nuevo.");
-                submitButton.disabled = false;
-            });
-        } 
-        } catch (error) {
-            console.error("Error en la función submitBtn:", error);
-            alert("Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde.");
-            submitButton.disabled = false;
-        }
+                imageWrapper.appendChild(labelArea);
+                imageWrapper.appendChild(inputArea);
+                imageWrapper.appendChild(labelWater);
+                imageWrapper.appendChild(inputWater);
+                imageWrapper.appendChild(labelDrain);
+                imageWrapper.appendChild(inputDrain);
+                imageWrapper.appendChild(labelImage);
+                imageWrapper.appendChild(inputImage);
+                imageWrapper.appendChild(miniaturasContainer);
+                imageWrapper.appendChild(deleteBtn);
+        
+                imagesContainer.appendChild(imageWrapper);
+            }
         });
         
-// Función para mostrar imágenes en una galería
-function mostrarMiniatura(imageURL, containerID) {
-    const container = document.getElementById(containerID);
+        
+        
 
-    if (!container) {
-        console.error(`Contenedor con ID ${containerID} no encontrado.`);
-        return;
-    }
+        await Promise.all(imageUploads);
+        document.getElementById("progressContainer").style.display = "none";
 
-    const img = document.createElement("img");
-    img.src = imageURL;
-    img.alt = "Imagen Miniatura";
-    img.style.maxWidth = "100px";
-    img.style.maxHeight = "100px";
-    img.style.margin = "5px";
+        // Generar UID único
+        const uid = '_' + Math.random().toString(36).substr(2, 9);
 
-    container.appendChild(img);
-}
-
-// Función para guardar los datos en Firebase
-async function saveSalesData(date, seller, company, tds, contact, phone, images, location) {
-    try {
-        const salesData = {
+        // Crear el objeto con los datos a guardar
+        const newEntry = {
+            uid, // Incluir el UID único
             date,
             seller,
             company,
-            tds,
+            tds: tdsValue,
             contact,
             phone,
-            images,
-            location,
+            images: imageData,
+            location: userLocation,
         };
 
-        const newSalesRef = push(salesRef);
-        await set(newSalesRef, salesData);
+        // Guardar los datos en Firebase
+        await push(ref(db, "sales_installations"), newEntry);
 
+        alert("Registro guardado exitosamente.");
+        clearForm();
     } catch (error) {
-        console.error("Error al guardar datos en Firebase:", error);
-        throw error;
+        console.error("Error al guardar el registro:", error);
+        alert("Ocurrió un error al guardar el registro. Verifica la consola para más detalles.");
+    } finally {
+        submitButton.disabled = false;
     }
+
+    loadSalesData();
+});
+
+
+function showUploadProgress(videoIndex, percentage, totalVideos) {
+    const uploadContainer = document.getElementById('uploadContainer');
+    uploadContainer.style.display = 'block'; // Mostrar el contenedor
+
+    // Verifica si ya existe un elemento de progreso para este video
+    let videoProgress = document.getElementById(`videoProgress${videoIndex}`);
+    if (!videoProgress) {
+        videoProgress = document.createElement('div');
+        videoProgress.id = `videoProgress${videoIndex}`;
+        videoProgress.style.marginBottom = '10px'; // Espaciado entre progresos
+        videoProgress.style.textAlign = 'center'; // Centrar texto
+        uploadContainer.appendChild(videoProgress);
+    }
+
+    // Actualizar el progreso del video actual
+    videoProgress.innerHTML = `
+        <strong>Video ${videoIndex}:</strong> ${percentage}%
+        ${percentage >= 100 ? '<span style="color: green;">(Completado)</span>' : ''}
+    `;
+
+    // Si todos los videos están cargados, mostrar un mensaje final
+    const completedVideos = document.querySelectorAll('#uploadContainer div span[style="color: green;"]').length;
+    if (completedVideos === totalVideos) {
+        setTimeout(() => {
+            uploadContainer.innerHTML = `
+                <p style="color: green; font-weight: bold; text-align: center;">
+                    ¡Todos los videos se han cargado exitosamente!
+                </p>
+            `;
+            setTimeout(() => {
+                uploadContainer.style.display = 'none'; // Ocultar después de unos segundos
+                alert("Registro guardado exitosamente.");
+            }, 1000);
+        }, 1000);
+    }   
 }
 
-// Cargar datos de ventas desde Firebase
+
+
+
+
+
+// Limpiar formulario
+function clearForm() {
+    const form = document.querySelector("form");
+    if (form) form.reset();
+
+    const videosContainer = document.getElementById("videosContainer");
+    if (videosContainer) videosContainer.innerHTML = "";
+
+    userLocation = null;
+    locationButton.disabled = false;
+    locationButton.textContent = "Guardar Ubicación";
+}
+
 function loadSalesData() {
-    onValue(salesRef, (snapshot) => {
-        const data = snapshot.val();
-        const salesContainer = document.getElementById("salesContainer");
+    const salesTableBody = document.querySelector('#salesTable tbody');
+    if (!salesTableBody) {
+        console.error('No se encontró el contenedor de la tabla.');
+        return; // Detener la ejecución si no se encuentra el contenedor
+    }
 
-        salesContainer.innerHTML = "";
+    const salesRef = ref(db, 'sales_installations');
+    get(salesRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            const salesData = snapshot.val();
 
-        if (data) {
-            Object.keys(data).forEach((id) => {
-                const sale = data[id];
-                const saleElement = document.createElement("div");
-                saleElement.className = "sale";
-                saleElement.innerHTML = `
-                    <p>${sale.date}</p>
-                    <p>${sale.seller}</p>
-                    <p>${sale.company}</p>
-                    <p>${sale.tds}</p>
-                    <p>${sale.contact}</p>
-                    <p>${sale.phone}</p>
-                    <div class="images-container"></div> <!-- Espacio para imágenes -->
+            // Limpiar la tabla antes de agregar los nuevos registros
+            salesTableBody.innerHTML = '';
+
+            // Iterar sobre los datos y agregar filas a la tabla
+            Object.entries(salesData).forEach(([id, sale]) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${sale.date}</td>
+                    <td>${sale.seller}</td>
+                    <td>${sale.company}</td>
+                    <td>${sale.branch}</td>
+                    <td><button data-uid="${id}">Ver</button></td>
                 `;
 
-                sale.images.forEach((image) => {
-                    mostrarMiniatura(image.url, saleElement.querySelector(".images-container").id);
-                });
-
-                salesContainer.appendChild(saleElement);
+                salesTableBody.appendChild(row);
             });
         } else {
-            salesContainer.innerHTML = "<p>No hay datos disponibles.</p>";
+            console.log("No hay datos disponibles.");
+        }
+    }).catch((error) => {
+        console.error("Error al cargar los datos:", error);
+    });
+}
+
+document.querySelector("#salesTable tbody").addEventListener("click", function (e) {
+    const row = e.target.closest('tr');
+
+    // Si hacemos clic en el botón "Ver"
+    if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Ver') {
+        const uid = e.target.dataset.uid; // Obtener el UID del dataset
+        if (uid) {
+            // Redirigir a la página de detalles con el UID en la URL
+            window.location.href = `detalles.html?uid=${encodeURIComponent(uid)}`;
+        }
+    }
+});
+
+
+// Función para normalizar cadenas (eliminar acentos y convertir a minúsculas)
+function normalizeString(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+// Filtro de búsqueda
+document.getElementById("searchBtn")?.addEventListener("click", filterSales);
+
+// Función para aplicar los filtros cuando se haga clic en "Buscar"
+function filterSales() {
+    const dateFilter = document.getElementById("searchDate")?.value || "";
+    const sellerFilter = normalizeString(document.getElementById("searchseller")?.value || "");
+    const companyFilter = normalizeString(document.getElementById("searchCompany")?.value || "");
+    const branchFilter = normalizeString(document.getElementById("searchBranch")?.value || "");
+
+    const queryRef = ref(db, "sales_installations"); // Cambia "sales" por el nodo de tu base de datos
+    onValue(queryRef, (snapshot) => {
+        const tableBody = document.querySelector("#salesTable tbody"); // Asegúrate de que exista esta tabla en tu HTML
+        tableBody.innerHTML = ""; // Limpiar tabla
+
+        if (snapshot.exists()) {
+            let rows = "";
+            snapshot.forEach((child) => {
+                const sale = child.val();
+
+                // Aplicar filtros
+                const matchesDate = dateFilter ? data.date === dateFilter : true;
+                const matchesSeller = sellerFilter ? normalizeString(sale.seller || "").includes(sellerFilter) : true;
+                const matchesCompany = companyFilter ? normalizeString(sale.company || "").includes(companyFilter) : true;
+                const matchesBranch = branchFilter ? normalizeString(sale.branch || "").includes(branchFilter) : true;
+
+                if (matchesDate && matchesSeller && matchesCompany && matchesBranch) {
+                    rows += `
+                        <tr>
+                            <td>${sale.date || "N/A"}</td>
+                            <td>${sale.seller || "N/A"}</td>
+                            <td>${sale.company || "N/A"}</td>
+                            <td>${sale.branch || "N/A"}</td>
+                        </tr>
+                    `;
+                }
+            });
+
+            tableBody.innerHTML = rows || "<tr><td colspan='4'>No se encontraron registros con los filtros aplicados.</td></tr>";
+        } else {
+            tableBody.innerHTML = "<tr><td colspan='4'>No hay registros disponibles.</td></tr>";
         }
     });
 }
 
-// Filtro por fecha
-function filterSales() {
-    const searchDateInput = document.getElementById("searchDate");
-    const searchDate = searchDateInput ? searchDateInput.value : null;
+// Limpiar filtros
+document.getElementById("clearFilter")?.addEventListener("click", () => {
+    document.getElementById("searchDate").value = "";
+    document.getElementById("searchseller").value = "";
+    document.getElementById("searchCompany").value = "";
+    document.getElementById("searchBranch").value = "";
 
-    if (salesRef && searchDate) {
-        onValue(salesRef, (snapshot) => {
-            const data = snapshot.val();
-            const filteredContainer = document.getElementById("filteredSalesContainer");
+    loadSalesData(); // Recargar todos los registros
+});
 
-            filteredContainer.innerHTML = "";
 
-            if (data) {
-                Object.keys(data).forEach((id) => {
-                    const sale = data[id];
-
-                    if (sale.date === searchDate) {
-                        const saleElement = document.createElement("div");
-                        saleElement.className = "sale";
-                        saleElement.innerHTML = `
-                            <p>${sale.date}</p>
-                            <p>${sale.seller}</p>
-                            <p>${sale.company}</p>
-                            <p>${sale.tds}</p>
-                            <p>${sale.contact}</p>
-                            <p>${sale.phone}</p>
-                            <div class="images-container" id="miniaturasContainer${id}"></div> <!-- Espacio para imágenes -->
-                        `;
-
-                        sale.images.forEach((image) => {
-                            mostrarMiniatura(image.url, `miniaturasContainer${id}`);
-                        });
-
-                        filteredContainer.appendChild(saleElement);
-                    }
-                });
-            } else {
-                filteredContainer.innerHTML = "<p>No hay datos disponibles para esta fecha.</p>";
-            }
-        });
-    }
-}
